@@ -1,0 +1,598 @@
+fileFormatVersion: 2
+guid: bec4fa780585f9f41ba6fb3f91cfb4da
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8179373751259232964
+    second: hazardman-3_hit_0
+  - first:
+      213: 1528436503192231591
+    second: hazardman-3_hit_1
+  - first:
+      213: -8936832132386671328
+    second: hazardman-3_hit_2
+  - first:
+      213: 8923418216052337429
+    second: hazardman-3_hit_3
+  - first:
+      213: -5074792174164666647
+    second: hazardman-3_hit_4
+  - first:
+      213: -4693520912215909192
+    second: hazardman-3_hit_5
+  - first:
+      213: 7165859379204554974
+    second: hazardman-3_hit_6
+  - first:
+      213: 7081447201198324531
+    second: hazardman-3_hit_7
+  - first:
+      213: -3015879259948093133
+    second: hazardman-3_hit_8
+  - first:
+      213: 2950507904835284353
+    second: hazardman-3_hit_9
+  - first:
+      213: 7367355440105423662
+    second: hazardman-3_hit_10
+  - first:
+      213: 3021272089419468254
+    second: hazardman-3_hit_11
+  - first:
+      213: -2412682188369905835
+    second: hazardman-3_hit_12
+  - first:
+      213: 1032990153728444694
+    second: hazardman-3_hit_13
+  - first:
+      213: -519651604197533004
+    second: hazardman-3_hit_14
+  - first:
+      213: 1929363551278794806
+    second: hazardman-3_hit_15
+  - first:
+      213: 5052942504418786475
+    second: hazardman-3_hit_16
+  - first:
+      213: 2613012515923413263
+    second: hazardman-3_hit_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: hazardman-3_hit_0
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 207
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c350a0fc8e60d7e80800000000000000
+      internalID: -8179373751259232964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hazardman-3_hit_1
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 207
+        width: 56
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ae5382d6e8163510800000000000000
+      internalID: 1528436503192231591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hazardman-3_hit_2
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 207
+        width: 37
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 025bbc3668ef9f380800000000000000
+      internalID: -8936832132386671328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hazardman-3_hit_3
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 212
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51bac06d69956db70800000000000000
+      internalID: 8923418216052337429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hazardman-3_hit_4
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 207
+        width: 26
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e69bfda767b299b0800000000000000
+      internalID: -5074792174164666647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hazardman-3_hit_5
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 143
+        width: 38
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bcd08109934ddeb0800000000000000
+      internalID: -4693520912215909192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hazardman-3_hit_6
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 143
+        width: 34
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed083e7932f327360800000000000000
+      internalID: 7165859379204554974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hazardman-3_hit_7
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 149
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33b3c1bd5ba564260800000000000000
+      internalID: 7081447201198324531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hazardman-3_hit_8
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 143
+        width: 25
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3317359bac17526d0800000000000000
+      internalID: -3015879259948093133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hazardman-3_hit_9
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 149
+        width: 27
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18d60b69e4f42f820800000000000000
+      internalID: 2950507904835284353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hazardman-3_hit_10
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 83
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2386852dba1e3660800000000000000
+      internalID: 7367355440105423662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hazardman-3_hit_11
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 79
+        width: 42
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edd46ab35f6bde920800000000000000
+      internalID: 3021272089419468254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hazardman-3_hit_12
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 78
+        width: 40
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 557bc46255e648ed0800000000000000
+      internalID: -2412682188369905835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hazardman-3_hit_13
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 79
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 619c571621be55e00800000000000000
+      internalID: 1032990153728444694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hazardman-3_hit_14
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 88
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ba18d48e93d9c8f0800000000000000
+      internalID: -519651604197533004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hazardman-3_hit_15
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 79
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6380f8c7de976ca10800000000000000
+      internalID: 1929363551278794806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hazardman-3_hit_16
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 15
+        width: 27
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bacba56af68af1640800000000000000
+      internalID: 5052942504418786475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hazardman-3_hit_17
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 15
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f09c345f909434420800000000000000
+      internalID: 2613012515923413263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      hazardman-3_hit_0: -8179373751259232964
+      hazardman-3_hit_1: 1528436503192231591
+      hazardman-3_hit_10: 7367355440105423662
+      hazardman-3_hit_11: 3021272089419468254
+      hazardman-3_hit_12: -2412682188369905835
+      hazardman-3_hit_13: 1032990153728444694
+      hazardman-3_hit_14: -519651604197533004
+      hazardman-3_hit_15: 1929363551278794806
+      hazardman-3_hit_16: 5052942504418786475
+      hazardman-3_hit_17: 2613012515923413263
+      hazardman-3_hit_2: -8936832132386671328
+      hazardman-3_hit_3: 8923418216052337429
+      hazardman-3_hit_4: -5074792174164666647
+      hazardman-3_hit_5: -4693520912215909192
+      hazardman-3_hit_6: 7165859379204554974
+      hazardman-3_hit_7: 7081447201198324531
+      hazardman-3_hit_8: -3015879259948093133
+      hazardman-3_hit_9: 2950507904835284353
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
