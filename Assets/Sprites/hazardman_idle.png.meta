@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 4c9ffec116aa65848bb0e1d6e241a736
+guid: 6baec07a12be1a94da7ce69e2120dc15
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1549981698804156460
-    second: hazardman_idle_0
+      213: -10556280178948279
+    second: hazardman_idle 1_0
   - first:
-      213: -5871447102253311791
-    second: hazardman_idle_1
+      213: -5367421604437761715
+    second: hazardman_idle 1_1
   - first:
-      213: 1563350608165554859
-    second: hazardman_idle_2
+      213: 8987107452295209816
+    second: hazardman_idle 1_2
   - first:
-      213: 2701855189231475521
-    second: hazardman_idle_3
+      213: 2912867468335441916
+    second: hazardman_idle 1_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -60,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -84,7 +84,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -122,89 +122,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: hazardman_idle_0
+      name: hazardman_idle 1_0
       rect:
         serializedVersion: 2
-        x: 20
-        y: 80
-        width: 31
-        height: 32
+        x: 0
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4d7fb6a6bdb5d7ae0800000000000000
-      internalID: -1549981698804156460
+      spriteID: 947c8cd7e1f7adff0800000000000000
+      internalID: -10556280178948279
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hazardman_idle_1
+      name: hazardman_idle 1_1
       rect:
         serializedVersion: 2
-        x: 84
-        y: 80
-        width: 31
-        height: 32
+        x: 64
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1d8d1b008fd648ea0800000000000000
-      internalID: -5871447102253311791
+      spriteID: d41eab31d761385b0800000000000000
+      internalID: -5367421604437761715
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hazardman_idle_2
+      name: hazardman_idle 1_2
       rect:
         serializedVersion: 2
-        x: 20
-        y: 16
-        width: 31
-        height: 31
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: baa491b581322b510800000000000000
-      internalID: 1563350608165554859
+      spriteID: 8536254bc9e98bc70800000000000000
+      internalID: 8987107452295209816
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hazardman_idle_3
+      name: hazardman_idle 1_3
       rect:
         serializedVersion: 2
-        x: 84
-        y: 16
-        width: 31
-        height: 32
+        x: 64
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 14b10b4cafaee7520800000000000000
-      internalID: 2701855189231475521
+      spriteID: cf7ece787859c6820800000000000000
+      internalID: 2912867468335441916
       vertices: []
       indices: 
       edges: []
@@ -213,7 +213,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5b93e23adf990ac42a2b8df51caca3d7
     internalID: 0
     vertices: []
     indices: 
@@ -221,12 +221,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      hazardman_idle_0: -1549981698804156460
-      hazardman_idle_1: -5871447102253311791
-      hazardman_idle_2: 1563350608165554859
-      hazardman_idle_3: 2701855189231475521
+      hazardman_idle 1_0: -10556280178948279
+      hazardman_idle 1_1: -5367421604437761715
+      hazardman_idle 1_2: 8987107452295209816
+      hazardman_idle 1_3: 2912867468335441916
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

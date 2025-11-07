@@ -16651,7 +16651,7 @@ MonoBehaviour:
   target: {fileID: 1730557362}
   deadZoneWidth: 2
   deadZoneHeight: 1.5
-  followSpeed: 10
+  followSpeed: 5
   offset: {x: 0, y: 0, z: -10}
   useBounds: 0
   minBounds: {x: 0, y: 0}
@@ -21492,11 +21492,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1730557362}
   - component: {fileID: 1730557361}
+  - component: {fileID: 1730557364}
   - component: {fileID: 1730557363}
   - component: {fileID: 1730557365}
   - component: {fileID: 1730557366}
   - component: {fileID: 1730557367}
-  - component: {fileID: 1730557368}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -21593,8 +21593,8 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 3.5
-  m_Material: {fileID: 6200000, guid: 47dfab688f47dae409e26e3abd3c080a, type: 2}
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -21605,6 +21605,52 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!61 &1730557364
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730557360}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.01372847, y: -0.01566267}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 1
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.40868258, y: 0.47170627}
+  m_EdgeRadius: 0
 --- !u!114 &1730557365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21618,10 +21664,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   moveSpeed: 5
-  jumpForce: 13
-  jumpCutMultiplier: 0.65
-  fallGravityMultiplier: 1.6
-  lowJumpGravityMultiplier: 1.2
+  jumpForce: 6
   groundCheck: {fileID: 963022649}
   groundCheckRadius: 0.12
   groundLayer:
@@ -21679,43 +21722,6 @@ MonoBehaviour:
   m_DefaultActionMap: 
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!70 &1730557368
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1730557360}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 47dfab688f47dae409e26e3abd3c080a, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: -0.0066247215, y: -0.018116014}
-  m_Size: {x: 0.37007886, y: 0.48134547}
-  m_Direction: 0
 --- !u!1 &1750639448
 GameObject:
   m_ObjectHideFlags: 0
