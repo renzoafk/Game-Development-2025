@@ -850,7 +850,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenuManager
   _debugMode: 1
-  _sceneToLoadAfterClickingPlay: SampeScene
+  _sceneToLoadAfterClickingPlay: SampleScene
 --- !u!1001 &1588746281
 PrefabInstance:
   m_ObjectHideFlags: 0
