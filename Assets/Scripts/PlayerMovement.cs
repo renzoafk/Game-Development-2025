@@ -11,12 +11,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpCutMultiplier = 0.65f;
 
     [Header("Better Gravity")]
-    [SerializeField] private float fallGravityMultiplier = 1.6f;   // more pull when falling
+    [SerializeField] private float fallGravityMultiplier = 1.6f;    // more pull when falling
     [SerializeField] private float lowJumpGravityMultiplier = 1.2f; // small extra pull if we let go early
 
     [Header("Ground Check")]
     [SerializeField] private Transform groundCheck;
-    [SerializeField] private float groundCheckRadius = 0.1f;
+    [SerializeField] private Vector2 groundCheckSize = new Vector2(0.8f, 0.1f);  // width, height of box
     [SerializeField] private LayerMask groundLayer;
 
     private Rigidbody2D rb;
@@ -96,8 +96,9 @@ public class PlayerMovement : MonoBehaviour
         if (moveAction != null)
             moveInput = moveAction.ReadValue<Vector2>();
 
+        // ground check using a box, wider than a circle so edges feel better
         Vector2 checkPos = groundCheck != null ? (Vector2)groundCheck.position : (Vector2)transform.position;
-        IsGrounded = Physics2D.OverlapCircle(checkPos, groundCheckRadius, groundLayer);
+        IsGrounded = Physics2D.OverlapBox(checkPos, groundCheckSize, 0f, groundLayer);
 
         if (animator != null)
         {
@@ -106,6 +107,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("verticalSpeed", rb.linearVelocity.y);
         }
 
+        // flip player sprite based on movement
         if (moveInput.x != 0)
         {
             Vector3 scale = transform.localScale;
@@ -143,6 +145,6 @@ public class PlayerMovement : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Vector2 checkPos = groundCheck != null ? (Vector2)groundCheck.position : (Vector2)transform.position;
-        Gizmos.DrawWireSphere(checkPos, groundCheckRadius);
+        Gizmos.DrawWireCube(checkPos, new Vector3(groundCheckSize.x, groundCheckSize.y, 0f));
     }
 }
