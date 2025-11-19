@@ -1,12 +1,16 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
+    [SerializeField] private FadeManager _fadeManager;
     public static MainMenuManager _;
     [SerializeField] private bool _debugMode;
     public enum MainMenuButtons { play, options, credits, quit };
     [SerializeField] private string _sceneToLoadAfterClickingPlay;
+
+    [SerializeField] AudioSource PlaySound;
     public void Awake()
     {
         if (_ == null)
@@ -47,7 +51,16 @@ public class MainMenuManager : MonoBehaviour
     }
     public void PlayClicked()
     {
-        SceneManager.LoadScene(_sceneToLoadAfterClickingPlay);
+        PlaySound.Play();
+        StartCoroutine(FadeOutAndThenLoadScene("SampleScene"));
+        //SceneManager.LoadScene(_sceneToLoadAfterClickingPlay);
+    }
+
+    IEnumerator FadeOutAndThenLoadScene(string sceneName)
+    {
+        _fadeManager.DoFade(0, 2, 2, 0);
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene(sceneName);
     }
     public void QuitGame()
     {
