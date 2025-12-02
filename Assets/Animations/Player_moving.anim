@@ -28,6 +28,8 @@ AnimationClip:
       value: {fileID: -2475244721938117482, guid: 6eb27dc7a981df74389338fcab42a0ae, type: 3}
     - time: 0.5
       value: {fileID: 5388680585774811855, guid: 6eb27dc7a981df74389338fcab42a0ae, type: 3}
+    - time: 0.6666667
+      value: {fileID: 3943112757741821266, guid: 6eb27dc7a981df74389338fcab42a0ae, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -54,12 +56,13 @@ AnimationClip:
     - {fileID: 5171166209790001242, guid: 6eb27dc7a981df74389338fcab42a0ae, type: 3}
     - {fileID: -2475244721938117482, guid: 6eb27dc7a981df74389338fcab42a0ae, type: 3}
     - {fileID: 5388680585774811855, guid: 6eb27dc7a981df74389338fcab42a0ae, type: 3}
+    - {fileID: 3943112757741821266, guid: 6eb27dc7a981df74389338fcab42a0ae, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.6666667
+    m_StopTime: 0.68333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -79,15 +82,8 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0
+  - time: 0.16666667
     functionName: PlayFootstep
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.33333334
-    functionName: 
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -100,8 +96,8 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.6666667
-    functionName: 
+  - time: 0.5
+    functionName: PlayFootstep
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
