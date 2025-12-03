@@ -152,9 +152,4 @@ public class PlayerMovement : MonoBehaviour
         Vector2 checkPos = groundCheck != null ? (Vector2)groundCheck.position : (Vector2)transform.position;
         Gizmos.DrawWireCube(checkPos, new Vector3(groundCheckSize.x, groundCheckSize.y, 0f));
     }
-
-    internal int GetFacingDirection()
-    {
-        throw new NotImplementedException();
-    }
 }
