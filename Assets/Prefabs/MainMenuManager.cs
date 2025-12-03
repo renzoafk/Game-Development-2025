@@ -6,11 +6,18 @@ public class MainMenuManager : MonoBehaviour
 {
     [SerializeField] private FadeManager _fadeManager;
     public static MainMenuManager _;
+
     [SerializeField] private bool _debugMode;
+
     public enum MainMenuButtons { play, options, credits, quit };
     [SerializeField] private string _sceneToLoadAfterClickingPlay;
 
+    [SerializeField] private GameObject mainMenuPanel;    // NEW
+    [SerializeField] private GameObject optionsPanel;      // NEW
+    [SerializeField] private GameObject creditsPanel;      // NEW
+
     [SerializeField] AudioSource PlaySound;
+
     public void Awake()
     {
         if (_ == null)
@@ -31,14 +38,13 @@ public class MainMenuManager : MonoBehaviour
                 PlayClicked();
                 break;
             case MainMenuButtons.options:
+                OptionsClicked();
                 break;
             case MainMenuButtons.credits:
+                CreditsClicked();
                 break;
             case MainMenuButtons.quit:
                 QuitGame();
-                break;
-            default:
-                Debug.Log("Button clicked that wasn't implemented in MainMenuManager Method");
                 break;
         }
     }
@@ -48,6 +54,25 @@ public class MainMenuManager : MonoBehaviour
         {
             Debug.Log(message);
         }
+    }
+    public void OptionsClicked()
+    {
+        DebugMessage("Opening OPTIONS menu...");
+        StartCoroutine(FadeSwapPanels(mainMenuPanel, optionsPanel));
+    }
+    public void BackToMainMenu()
+    {
+        DebugMessage("Going back to MAIN MENU...");
+        if (optionsPanel.activeSelf)
+            StartCoroutine(FadeSwapPanels(optionsPanel, mainMenuPanel));
+
+        else if (creditsPanel.activeSelf)
+            StartCoroutine(FadeSwapPanels(creditsPanel, mainMenuPanel));
+    }
+    public void CreditsClicked()
+    {
+        DebugMessage("Opening CREDITS menu...");
+        StartCoroutine(FadeSwapPanels(mainMenuPanel, creditsPanel));
     }
     public void PlayClicked()
     {
@@ -70,5 +95,20 @@ public class MainMenuManager : MonoBehaviour
             Application.Quit();
         #endif
     }
+    private IEnumerator FadeSwapPanels(GameObject from, GameObject to)
+    {
+        // Fade to black
+        _fadeManager.DoFade(0, 1, 0.5f, 0);
+        yield return new WaitForSeconds(0.6f);
+
+        // Switch panels while black
+        from.SetActive(false);
+        to.SetActive(true);
+
+        // Fade back in
+        _fadeManager.DoFade(1, 0, 0.5f, 0);
+        yield return null;
+    }
+
 
 }
