@@ -97,35 +97,36 @@ public class OxygenHealthSystem : MonoBehaviour
     }
 
     void OnLowOxygen()
+{
+    if (lowOxygenWarning != null)
+        lowOxygenWarning.SetActive(true);
+
+    if (lowOxygenSound != null && audioSource != null)
     {
-        if (lowOxygenWarning != null)
-            lowOxygenWarning.SetActive(true);
-
-        if (lowOxygenSound != null && audioSource != null)
-        {
-            if (!audioSource.isPlaying)
-                audioSource.PlayOneShot(lowOxygenSound);
-        }
-
-        
-        if (lowOxygenParticles != null && !lowOxygenParticles.isPlaying)
-            lowOxygenParticles.Play();
-
-        if (playerMovement != null)
-            playerMovement.speed = playerMovement.speed * 0.7f;
+        if (!audioSource.isPlaying)
+            audioSource.PlayOneShot(lowOxygenSound);
     }
 
-    void OnOxygenRestored()
-    {
-        if (lowOxygenWarning != null)
-            lowOxygenWarning.SetActive(false);
+    if (lowOxygenParticles != null && !lowOxygenParticles.isPlaying)
+        lowOxygenParticles.Play();
 
-        if (lowOxygenParticles != null && lowOxygenParticles.isPlaying)
-            lowOxygenParticles.Stop();
+    if (playerMovement != null)
+        playerMovement.moveSpeed *= 0.7f; // <<< FIXED
+}
 
-        if (playerMovement != null)
-            playerMovement.speed = playerMovement.originalSpeed;
-    }
+void OnOxygenRestored()
+{
+    if (lowOxygenWarning != null)
+        lowOxygenWarning.SetActive(false);
+
+    if (lowOxygenParticles != null && lowOxygenParticles.isPlaying)
+        lowOxygenParticles.Stop();
+
+    if (playerMovement != null)
+        playerMovement.moveSpeed = playerMovement.originalMoveSpeed; // <<< FIXED
+}
+
+
 
     void OnOxygenDepleted()
     {
