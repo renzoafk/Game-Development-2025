@@ -1,10 +1,11 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] public float moveSpeed = 5f;
     [SerializeField] private float jumpForce = 9.5f;   // a bit higher so we beat the stronger gravity
 
     [Header("Variable Jump")]
@@ -18,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private Vector2 groundCheckSize = new Vector2(0.8f, 0.1f);  // width, height of box
     [SerializeField] private LayerMask groundLayer;
+
+    [HideInInspector] public float originalMoveSpeed;
 
     private Rigidbody2D rb;
     private Vector2 moveInput;
@@ -41,6 +44,8 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+        originalMoveSpeed = moveSpeed;
 
         playerInput = GetComponent<PlayerInput>();
         if (playerInput != null)
