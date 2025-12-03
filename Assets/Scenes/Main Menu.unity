@@ -1399,6 +1399,9 @@ MonoBehaviour:
   _fadeManager: {fileID: 33475027}
   _debugMode: 1
   _sceneToLoadAfterClickingPlay: SampleScene
+  mainMenuPanel: {fileID: 0}
+  optionsPanel: {fileID: 0}
+  creditsPanel: {fileID: 0}
   PlaySound: {fileID: 1549046761}
 --- !u!1 &1549046760
 GameObject:

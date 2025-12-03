@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System;  // NEW
 
 public class ScreenFade : MonoBehaviour
 {
@@ -68,9 +69,7 @@ public class ScreenFade : MonoBehaviour
             yield return null;
         }
 
-        c.a = 1f;
+        c.a = 1f; 
         img.color = c;
-
-        SceneManager.LoadScene(sceneName);
     }
 }
