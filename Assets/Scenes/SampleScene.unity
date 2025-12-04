@@ -22947,8 +22947,8 @@ Transform:
   m_GameObject: {fileID: 1403090181}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 173.9083, y: -53.866493, z: 0}
-  m_LocalScale: {x: 1, y: 0.7657491, z: 1}
+  m_LocalPosition: {x: 173.5057, y: -53.8164, z: 0}
+  m_LocalScale: {x: 0.7987, y: 0.7611546, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 766182985}
@@ -24658,8 +24658,8 @@ Transform:
   m_GameObject: {fileID: 1464015372}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 174.76, y: -53.87, z: 0}
-  m_LocalScale: {x: 1, y: 0.7657491, z: 1}
+  m_LocalPosition: {x: 174.4238, y: -53.8518, z: 0}
+  m_LocalScale: {x: 0.8319, y: 0.76406443, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1708902059}
@@ -27899,7 +27899,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4164e253a3b38e4c94c0acdc361f946, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Attack
-  comboResetTime: 0.8
+  comboResetTime: 0.2
 --- !u!1 &1782649630
 GameObject:
   m_ObjectHideFlags: 0
