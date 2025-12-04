@@ -27655,6 +27655,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  originalMoveSpeed: 0
 --- !u!95 &1730557366
 Animator:
   serializedVersion: 7
@@ -27756,7 +27757,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce124e57a0261274c987bf11d9621f49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSounds
-  swingSounds: []
+  swingSounds:
+  - {fileID: 8300000, guid: 4c5fa91f7f5143d4c86c46216f84edfe, type: 3}
+  - {fileID: 8300000, guid: 90fbf748ff6b8404595a3ceb650aba2b, type: 3}
+  - {fileID: 8300000, guid: c1f6ad73a9a47d24ebd69855a7baf9f9, type: 3}
+  swingSoundsSlam:
+  - {fileID: 8300000, guid: b4df7f0ed8de44a499fe1f167f4ea54a, type: 3}
+  - {fileID: 8300000, guid: 1bfdb3c968080684994cbdd3de36dca4, type: 3}
   BrickFS:
   - {fileID: 8300000, guid: b241c79a03fe8434dbddc3f05b8441ea, type: 3}
   - {fileID: 8300000, guid: 96006cc989a7bd947b76206774930692, type: 3}

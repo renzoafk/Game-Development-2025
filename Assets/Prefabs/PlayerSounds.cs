@@ -7,6 +7,7 @@ public class PlayerSounds : MonoBehaviour
 {
     [Header("Weapon")]
     public AudioClip[] swingSounds;
+    public AudioClip[] swingSoundsSlam;
 
     [Header("Footsteps")]
     public List<AudioClip> BrickFS;
@@ -15,12 +16,12 @@ public class PlayerSounds : MonoBehaviour
     public List<AudioClip> Landing;
 
 
-    private AudioSource weaponSource, footstepSource, LandingSource;
+    private AudioSource weaponSource, footstepSource, landingSource;
     void Start()
     {
         weaponSource = GetComponent<AudioSource>();
         footstepSource = GetComponent<AudioSource>();
-        LandingSource = GetComponent<AudioSource>();
+        landingSource = GetComponent<AudioSource>();
     }
 
     void PlayCrowbarSwing()
@@ -30,12 +31,19 @@ public class PlayerSounds : MonoBehaviour
         weaponSource.Play();
         //Debug.Log(clip.name);
     }
+    void PlayCrowbarSwingSlam()
+    {
+        AudioClip clip = swingSoundsSlam[Random.Range(0, swingSoundsSlam.Length)];
+        weaponSource.clip = clip;
+        weaponSource.Play();
+        //Debug.Log(clip.name);
+    }
 
     void PlayFootstep()
     {
         AudioClip clip = BrickFS[Random.Range(0, BrickFS.Count)];
-        weaponSource.clip = clip;
-        weaponSource.Play();
+        footstepSource.clip = clip;
+        footstepSource.Play();
         //Debug.Log(clip.name);
 
     }
@@ -43,8 +51,8 @@ public class PlayerSounds : MonoBehaviour
     void PlayLanding()
     {
         AudioClip clip = Landing[Random.Range(0, Landing.Count)];
-        LandingSource.clip = clip;
-        LandingSource.Play();
+        landingSource.clip = clip;
+        landingSource.Play();
         //Debug.Log(clip.name);
 
     }
