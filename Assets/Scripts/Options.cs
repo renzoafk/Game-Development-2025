@@ -4,85 +4,123 @@ using UnityEngine.UI;
 public class OptionsMenu : MonoBehaviour
 {
     [Header("UI")]
-    [SerializeField] private Slider masterVolumeSlider;
-    [SerializeField] private Slider musicVolumeSlider;
-    [SerializeField] private Slider sfxVolumeSlider;
-    [SerializeField] private Toggle fullscreenToggle;
+    public Slider masterSlider;
+    public Slider musicSlider;
+    public Slider sfxSlider;
+    public Toggle fullscreenToggle;
 
     [Header("Audio Sources")]
-    [SerializeField] private AudioSource musicSource;
-    [SerializeField] private AudioSource sfxSource;
+    public AudioSource musicSource; // e.g. MainMenuMusic
+    public AudioSource sfxSource;   // e.g. UI Audio
 
-    private const string MasterKey = "Volume_Master";
-    private const string MusicKey = "Volume_Music";
-    private const string SfxKey = "Volume_Sfx";
-    private const string FullKey = "Fullscreen";
+    // PlayerPrefs keys
+    const string MasterKey = "MasterVolume";
+    const string MusicKey = "MusicVolume";
+    const string SfxKey = "SfxVolume";
+    const string FullKey = "Fullscreen";
 
-    private void Start()
+    // Internal values (0–1)
+    float masterVolume = 1f;
+    float musicVolume = 1f;
+    float sfxVolume = 1f;
+
+    void Start()
     {
-        
-        // PlayerPrefs.DeleteAll();
-        float master = PlayerPrefs.GetFloat(MasterKey, 1f);
-        float music = PlayerPrefs.GetFloat(MusicKey, 1f);
-        float sfx = PlayerPrefs.GetFloat(SfxKey, 1f);
+        Debug.Log("OptionsMenu Start() – loading saved settings");
+
+        // Load saved values (default to 1)
+        masterVolume = PlayerPrefs.GetFloat(MasterKey, 1f);
+        musicVolume = PlayerPrefs.GetFloat(MusicKey, 1f);
+        sfxVolume = PlayerPrefs.GetFloat(SfxKey, 1f);
         bool fullscreen = PlayerPrefs.GetInt(FullKey, 1) == 1;
 
-        if (masterVolumeSlider) masterVolumeSlider.value = master;
-        if (musicVolumeSlider) musicVolumeSlider.value = music;
-        if (sfxVolumeSlider) sfxVolumeSlider.value = sfx;
-        if (fullscreenToggle) fullscreenToggle.isOn = fullscreen;
+        // Set UI widgets if they exist
+        if (masterSlider)
+        {
+            masterSlider.minValue = 0f;
+            masterSlider.maxValue = 1f;
+            masterSlider.wholeNumbers = false;
+            masterSlider.value = masterVolume;
+        }
 
-        ApplyMaster(master);
-        ApplyMusic(music);
-        ApplySfx(sfx);
+        if (musicSlider)
+        {
+            musicSlider.minValue = 0f;
+            musicSlider.maxValue = 1f;
+            musicSlider.wholeNumbers = false;
+            musicSlider.value = musicVolume;
+        }
+
+        if (sfxSlider)
+        {
+            sfxSlider.minValue = 0f;
+            sfxSlider.maxValue = 1f;
+            sfxSlider.wholeNumbers = false;
+            sfxSlider.value = sfxVolume;
+        }
+
+        if (fullscreenToggle)
+        {
+            fullscreenToggle.isOn = fullscreen;
+        }
+
+        // Apply to actual audio + screen
+        ApplyVolumes();
         Screen.fullScreen = fullscreen;
     }
 
-    // MASTER only
+    // MASTER slider callback
     public void OnMasterVolumeChanged(float value)
     {
-        ApplyMaster(value);
-        PlayerPrefs.SetFloat(MasterKey, value);
-    }
+        masterVolume = Mathf.Clamp01(value);
+        Debug.Log("Master slider changed: " + masterVolume);
 
-    // MUSIC only
-    public void OnMusicVolumeChanged(float value)
-    {
-        ApplyMusic(value);
-        PlayerPrefs.SetFloat(MusicKey, value);
-    }
-
-    // SFX only
-    public void OnSfxVolumeChanged(float value)
-    {
-        ApplySfx(value);
-        PlayerPrefs.SetFloat(SfxKey, value);
-    }
-
-    public void OnFullscreenChanged(bool isOn)
-    {
-        Screen.fullScreen = isOn;
-        PlayerPrefs.SetInt(FullKey, isOn ? 1 : 0);
-    }
-
-    public void OnApplyPressed()
-    {
+        ApplyVolumes();
+        PlayerPrefs.SetFloat(MasterKey, masterVolume);
         PlayerPrefs.Save();
     }
 
-    // --- helpers ---
-    private void ApplyMaster(float v)
+    // MUSIC slider callback
+    public void OnMusicVolumeChanged(float value)
     {
-        AudioListener.volume = v;
+        musicVolume = Mathf.Clamp01(value);
+        Debug.Log("Music slider changed: " + musicVolume);
+
+        ApplyVolumes();
+        PlayerPrefs.SetFloat(MusicKey, musicVolume);
+        PlayerPrefs.Save();
     }
 
-    private void ApplyMusic(float v)
+    // SFX slider callback
+    public void OnSfxVolumeChanged(float value)
     {
-        if (musicSource) musicSource.volume = v;
+        sfxVolume = Mathf.Clamp01(value);
+        Debug.Log("SFX slider changed: " + sfxVolume);
+
+        ApplyVolumes();
+        PlayerPrefs.SetFloat(SfxKey, sfxVolume);
+        PlayerPrefs.Save();
     }
 
-    private void ApplySfx(float v)
+    // FULLSCREEN toggle callback
+    public void OnFullscreenChanged(bool isOn)
     {
-        if (sfxSource) sfxSource.volume = v;
+        Debug.Log("Fullscreen changed: " + isOn);
+        Screen.fullScreen = isOn;
+        PlayerPrefs.SetInt(FullKey, isOn ? 1 : 0);
+        PlayerPrefs.Save();
+    }
+
+    // Actually push volumes to audio sources
+    void ApplyVolumes()
+    {
+        float musicVol = masterVolume * musicVolume;
+        float sfxVol = masterVolume * sfxVolume;
+
+        if (musicSource)
+            musicSource.volume = musicVol;
+
+        if (sfxSource)
+            sfxSource.volume = sfxVol;
     }
 }
