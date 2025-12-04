@@ -68,6 +68,12 @@ public class OptionsMenu : MonoBehaviour
         ApplyVolumes();
         Screen.fullScreen = fullscreen;
     }
+    private void ApplyVolumes()
+    {
+        ApplyMasterVolume(masterVolume);
+        ApplyMusicVolume(musicVolume);
+        ApplySfxVolume(sfxVolume);
+    }
 
     // MASTER slider callback
     public void OnMasterVolumeChanged(float value)
@@ -112,15 +118,32 @@ public class OptionsMenu : MonoBehaviour
     }
 
     // Actually push volumes to audio sources
-    void ApplyVolumes()
+    private void ApplyMasterVolume(float value)
     {
-        float musicVol = masterVolume * musicVolume;
-        float sfxVol = masterVolume * sfxVolume;
+        // Store the value
+        masterVolume = value;
+
+        // Global volume for the whole game (all scenes)
+        AudioListener.volume = value;
+
+        // Optional: also apply to any direct references you already have
+        if (musicSource) musicSource.volume = musicVolume * value;
+        if (sfxSource) sfxSource.volume = sfxVolume * value;
+    }
+
+    private void ApplyMusicVolume(float value)
+    {
+        musicVolume = value;
 
         if (musicSource)
-            musicSource.volume = musicVol;
+            musicSource.volume = value * masterVolume;
+    }
+
+    private void ApplySfxVolume(float value)
+    {
+        sfxVolume = value;
 
         if (sfxSource)
-            sfxSource.volume = sfxVol;
+            sfxSource.volume = value * masterVolume;
     }
 }
