@@ -1,105 +1,132 @@
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 
 public class TutorialFadeText : MonoBehaviour
 {
-    [Header("Setup")]
-    [SerializeField] private string playerTag = "Player";
+    [Header("UI")]
     [SerializeField] private TextMeshProUGUI tmp;
 
     [Header("Fade Settings")]
-    [SerializeField] private float fadeInTime = 0.5f;
-    [SerializeField] private float fadeOutTime = 0.5f;
+    [SerializeField] private float fadeInTime = 0.4f;
+    [SerializeField] private float fadeOutTime = 0.6f;
+    [SerializeField] private float delayAfterComplete = 0.15f;
 
-    private bool playerInside = false;
-    private bool fadingIn = false;
-    private bool fadingOut = false;
+    [Header("Input that completes this tutorial")]
+    [SerializeField] private KeyCode[] completionKeys;
+
+    private enum State
+    {
+        Hidden,
+        FadingIn,
+        WaitingForInput,
+        DelayAfterInput,
+        FadingOut,
+        Done
+    }
+
+    private State state = State.Hidden;
     private float alpha = 0f;
+    private float timer = 0f;
 
-    void Awake()
+    private void Awake()
     {
         if (tmp == null)
-        {
             tmp = GetComponent<TextMeshProUGUI>();
-        }
 
-        // Start invisible
+        // start invisible but active
         alpha = 0f;
         SetAlpha(alpha);
-        gameObject.SetActive(false);
-    }
-
-    void Update()
-    {
-        // Fade in
-        if (fadingIn)
-        {
-            alpha += Time.deltaTime / Mathf.Max(0.0001f, fadeInTime);
-            if (alpha >= 1f)
-            {
-                alpha = 1f;
-                fadingIn = false;
-            }
-            SetAlpha(alpha);
-        }
-
-        // Fade out
-        if (fadingOut)
-        {
-            alpha -= Time.deltaTime / Mathf.Max(0.0001f, fadeOutTime);
-            if (alpha <= 0f)
-            {
-                alpha = 0f;
-                fadingOut = false;
-                SetAlpha(alpha);
-                gameObject.SetActive(false);
-                return;
-            }
-
-            SetAlpha(alpha);
-        }
-    }
-
-    public void StartFadeOut()
-    {
-        fadingOut = true;
-        fadingIn = false;
-    }
-
-    private void StartFadeIn()
-    {
         gameObject.SetActive(true);
-        fadingIn = true;
-        fadingOut = false;
-        alpha = 0f;
-        SetAlpha(alpha);
+    }
+
+    private void Update()
+    {
+        switch (state)
+        {
+            case State.Hidden:
+            case State.Done:
+                // do nothing until Show() is called
+                return;
+
+            case State.FadingIn:
+                timer += Time.deltaTime;
+                alpha = Mathf.Clamp01(timer / Mathf.Max(0.0001f, fadeInTime));
+                SetAlpha(alpha);
+
+                if (alpha >= 1f)
+                {
+                    state = State.WaitingForInput;
+                    timer = 0f;
+                }
+                break;
+
+            case State.WaitingForInput:
+                if (WasCompletionKeyPressed())
+                {
+                    state = State.DelayAfterInput;
+                    timer = 0f;
+                }
+                break;
+
+            case State.DelayAfterInput:
+                timer += Time.deltaTime;
+                if (timer >= delayAfterComplete)
+                {
+                    state = State.FadingOut;
+                    timer = 0f;
+                }
+                break;
+
+            case State.FadingOut:
+                timer += Time.deltaTime;
+                float t = timer / Mathf.Max(0.0001f, fadeOutTime);
+                alpha = Mathf.Clamp01(1f - t);
+                SetAlpha(alpha);
+
+                if (alpha <= 0f)
+                {
+                    alpha = 0f;
+                    SetAlpha(alpha);
+                    gameObject.SetActive(false);   // hide completely
+                    state = State.Done;
+                }
+                break;
+        }
+    }
+
+    private bool WasCompletionKeyPressed()
+    {
+        if (completionKeys == null) return false;
+
+        foreach (KeyCode key in completionKeys)
+        {
+            if (Input.GetKeyDown(key))
+                return true;
+        }
+        return false;
     }
 
     private void SetAlpha(float a)
     {
-        a = Mathf.Clamp01(a);
         if (tmp == null) return;
 
+        a = Mathf.Clamp01(a);
         Color c = tmp.color;
         c.a = a;
         tmp.color = c;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    /// <summary>
+    /// Called by a trigger script when the player enters that area.
+    /// </summary>
+    public void Show()
     {
-        if (!other.CompareTag(playerTag)) return;
+        if (state != State.Hidden) return;   // only first time
 
-        playerInside = true;
-        Debug.Log("Player entered JUMP tutorial trigger");
-        StartFadeIn();
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (!other.CompareTag(playerTag)) return;
-
-        playerInside = false;
-        Debug.Log("Player left JUMP tutorial trigger");
-        StartFadeOut();
+        gameObject.SetActive(true);
+        timer = 0f;
+        alpha = 0f;
+        SetAlpha(alpha);
+        state = State.FadingIn;
     }
 }
