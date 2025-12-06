@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 1305143}
   - component: {fileID: 1305142}
   - component: {fileID: 1305149}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Starfish Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6586,14 +6586,13 @@ GameObject:
   - component: {fileID: 982484275}
   - component: {fileID: 982484278}
   - component: {fileID: 982484277}
-  - component: {fileID: 982484276}
   m_Layer: 5
   m_Name: SPACE TO JUMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &982484275
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6613,23 +6612,6 @@ RectTransform:
   m_AnchoredPosition: {x: 37.7, y: -64.9}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &982484276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 982484274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4665d65d7d303c54e8887a7020eb08fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TutorialFadeText
-  tmp: {fileID: 0}
-  fadeInTime: 0.4
-  fadeOutTime: 0.6
-  delayAfterComplete: 0.15
-  completionKeys: 20000000
 --- !u!114 &982484277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14202,31 +14184,13 @@ GameObject:
   - component: {fileID: 1659078077}
   - component: {fileID: 1659078076}
   - component: {fileID: 1659078075}
-  - component: {fileID: 1659078074}
   m_Layer: 5
   m_Name: Press Left-Click to Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1659078074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1659078073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4665d65d7d303c54e8887a7020eb08fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TutorialFadeText
-  tmp: {fileID: 0}
-  fadeInTime: 0.4
-  fadeOutTime: 0.6
-  delayAfterComplete: 0.15
-  completionKeys: 44010000
+  m_IsActive: 1
 --- !u!114 &1659078075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15241,6 +15205,7 @@ GameObject:
   - component: {fileID: 1730557370}
   - component: {fileID: 1730557371}
   - component: {fileID: 1730557372}
+  - component: {fileID: 1730557373}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -15629,6 +15594,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06078535eb7fd09489d6a49644a6aa52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInventory
+--- !u!114 &1730557373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730557360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 759a239ff27a76143bd1baa3e04733f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Atta
+  damage: 1
+  enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &1735967392
 GameObject:
   m_ObjectHideFlags: 0
@@ -16063,7 +16044,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6da867e4b2d24f4bb8aae455a7cbdd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnableTutorialOnTrigger
-  tutorialText: {fileID: 1659078073}
+  tutorialText: {fileID: 0}
+  triggerOnce: 1
 --- !u!61 &1771674715
 BoxCollider2D:
   m_ObjectHideFlags: 0

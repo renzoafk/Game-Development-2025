@@ -23,6 +23,7 @@ public class EnemyHealth : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         originalColor = sr.color;
         currentHealth = maxHealth;
+        Debug.Log($"[EnemyHealth] {name} spawned with {currentHealth} HP");
     }
 
     public void TakeDamage(int amount, Vector2 hitSourceWorldPos)
@@ -30,6 +31,8 @@ public class EnemyHealth : MonoBehaviour
         if (isDead) return;
 
         currentHealth -= amount;
+        Debug.Log($"[EnemyHealth] {name} took {amount} damage at {hitSourceWorldPos}. HP now {currentHealth}/{maxHealth}");
+
 
         StartCoroutine(HitFeedbackCoroutine(hitSourceWorldPos));
 
@@ -61,7 +64,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (isDead) return;
         isDead = true;
-
+        Debug.Log($"[EnemyHealth] {name} died");
         foreach (var col in GetComponents<Collider2D>())
             col.enabled = false;
 

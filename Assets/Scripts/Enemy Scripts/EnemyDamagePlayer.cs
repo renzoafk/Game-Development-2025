@@ -9,17 +9,27 @@ public class EnemyDamagePlayer : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
+        Debug.Log($"[EnemyDamagePlayer] {name} collided with {collision.collider.name}, tag={collision.collider.tag}");
+
         if (!collision.collider.CompareTag("Player")) return;
 
-        if (Time.time < lastDamageTime + damageCooldown) return;
-
+        if (Time.time < lastDamageTime + damageCooldown)
+        {
+            Debug.Log("[EnemyDamagePlayer] Still on cooldown, no damage");
+            return;
+        }
         lastDamageTime = Time.time;
 
         // your player health script must be on the same object as the Player tag
         var playerHealth = collision.collider.GetComponent<PlayerHealth>();
         if (playerHealth != null)
         {
+            Debug.Log($"[EnemyDamagePlayer] Damaging PLAYER for {contactDamage}");
             playerHealth.TakeDamage(contactDamage);
+        }
+        else
+        {
+            Debug.Log("[EnemyDamagePlayer] PlayerHealth NOT found on collider tagged Player");
         }
     }
 }
