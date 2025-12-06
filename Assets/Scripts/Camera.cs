@@ -20,16 +20,31 @@ public class MetroidvaniaCamera2D : MonoBehaviour
 
     private Camera cam;
 
+    // these store default and active offsets
+    private Vector3 defaultOffset;
+    private Vector3 currentOffset;
+
+    // for zoom functionality
+    private float defaultOrthoSize;
+    private Coroutine zoomRoutine;
+
     private void Awake()
     {
         cam = GetComponent<Camera>();
+
+        defaultOffset = offset;
+        currentOffset = offset;
+
+        if (cam != null)
+        {
+            defaultOrthoSize = cam.orthographicSize;
+        }
     }
 
     private void LateUpdate()
     {
         if (target == null)
         {
-            // keep z so the camera does not go to 0
             transform.position = new Vector3(transform.position.x, transform.position.y, -10f);
             return;
         }
@@ -40,17 +55,19 @@ public class MetroidvaniaCamera2D : MonoBehaviour
         float halfDZWidth = deadZoneWidth * 0.5f;
         float halfDZHeight = deadZoneHeight * 0.5f;
 
+        // camera movement on X
         if (targetPos.x < camPos.x - halfDZWidth)
             camPos.x = targetPos.x + halfDZWidth;
         else if (targetPos.x > camPos.x + halfDZWidth)
             camPos.x = targetPos.x - halfDZWidth;
 
+        // camera movement on Y
         if (targetPos.y < camPos.y - halfDZHeight)
             camPos.y = targetPos.y + halfDZHeight;
         else if (targetPos.y > camPos.y + halfDZHeight)
             camPos.y = targetPos.y - halfDZHeight;
 
-        Vector3 desired = camPos + offset;
+        Vector3 desired = camPos + currentOffset;
 
         if (useBounds && cam != null)
         {
@@ -61,9 +78,58 @@ public class MetroidvaniaCamera2D : MonoBehaviour
             desired.y = Mathf.Clamp(desired.y, minBounds.y + vertExtent, maxBounds.y - vertExtent);
         }
 
-        // always force z so we never look from inside the scene
+        // force Z depth
         desired.z = -10f;
 
         transform.position = Vector3.Lerp(transform.position, desired, followSpeed * Time.deltaTime);
+    }
+
+    // called externally from zones
+    public void SetOffset(Vector3 newOffset)
+    {
+        currentOffset = newOffset;
+    }
+
+    public void ResetOffset()
+    {
+        currentOffset = defaultOffset;
+    }
+
+    //--------------------------------------------------------------
+    // ZOOM FUNCTIONS
+    //--------------------------------------------------------------
+
+    public void SetZoom(float targetSize, float duration)
+    {
+        if (cam == null) return;
+
+        if (zoomRoutine != null)
+            StopCoroutine(zoomRoutine);
+
+        zoomRoutine = StartCoroutine(ZoomCoroutine(targetSize, duration));
+    }
+
+    public void ResetZoom(float duration)
+    {
+        SetZoom(defaultOrthoSize, duration);
+    }
+
+    private System.Collections.IEnumerator ZoomCoroutine(float targetSize, float duration)
+    {
+        float startSize = cam.orthographicSize;
+        float timeElapsed = 0f;
+        duration = Mathf.Max(0.01f, duration);
+
+        while (timeElapsed < duration)
+        {
+            timeElapsed += Time.deltaTime;
+            float t = timeElapsed / duration;
+
+            cam.orthographicSize = Mathf.Lerp(startSize, targetSize, t);
+
+            yield return null;
+        }
+
+        cam.orthographicSize = targetSize;
     }
 }
