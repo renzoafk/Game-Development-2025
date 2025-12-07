@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Attack : MonoBehaviour
+public class Attack : MonoBehaviour   // or PlayerAttack, keep whatever you already have
 {
     private Animator anim;
     private PlayerInput playerInput;
@@ -11,6 +11,10 @@ public class Attack : MonoBehaviour
     private bool canClick = true;     // True only when player can trigger next attack
     public float comboResetTime = 1f; // Reset combo if idle too long
     private float comboTimer = 0f;
+
+    // ------------- NEW: Hitbox reference -------------
+    [Header("Melee Hitbox")]
+    [SerializeField] private GameObject meleeHitbox;
 
     void Start()
     {
@@ -24,6 +28,10 @@ public class Attack : MonoBehaviour
             attackAction = new InputAction("Attack", InputActionType.Button, "<Mouse>/leftButton");
             attackAction.Enable();
         }
+
+        // make sure hitbox starts OFF
+        if (meleeHitbox != null)
+            meleeHitbox.SetActive(false);
     }
 
     void Update()
@@ -55,7 +63,7 @@ public class Attack : MonoBehaviour
         anim.SetTrigger("Attack");
     }
 
-    // Call this at the END of each animation via Animation Event
+    // Called at the END of each animation via Animation Event
     public void AllowNextClick()
     {
         canClick = true;
@@ -73,5 +81,21 @@ public class Attack : MonoBehaviour
     {
         if (attackAction != null)
             attackAction.Disable();
+    }
+
+    // ------------- NEW: functions for animation events -------------
+
+    // Called when the swing becomes "active"
+    public void EnableHitbox()
+    {
+        if (meleeHitbox != null)
+            meleeHitbox.SetActive(true);
+    }
+
+    // Called when the swing is finished
+    public void DisableHitbox()
+    {
+        if (meleeHitbox != null)
+            meleeHitbox.SetActive(false);
     }
 }

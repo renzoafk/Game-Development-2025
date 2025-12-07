@@ -291,7 +291,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDamping: 0
+  m_LinearDamping: 4
   m_AngularDamping: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 47dfab688f47dae409e26e3abd3c080a, type: 2}
@@ -444,7 +444,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.5, y: 0.5}
+  m_Size: {x: 0.28, y: 0.5}
   m_EdgeRadius: 0
 --- !u!1 &7867731
 GameObject:
@@ -13094,6 +13094,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MeleeHitbox
   damage: 1
+  enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  hitboxCollider: {fileID: 1497695292}
 --- !u!1 &1524426929
 GameObject:
   m_ObjectHideFlags: 0
@@ -15205,7 +15209,6 @@ GameObject:
   - component: {fileID: 1730557370}
   - component: {fileID: 1730557371}
   - component: {fileID: 1730557372}
-  - component: {fileID: 1730557373}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -15582,6 +15585,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Attack
   comboResetTime: 0.2
+  meleeHitbox: {fileID: 0}
 --- !u!114 &1730557372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15594,22 +15598,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06078535eb7fd09489d6a49644a6aa52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInventory
---- !u!114 &1730557373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1730557360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 759a239ff27a76143bd1baa3e04733f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Atta
-  damage: 1
-  enemyLayerMask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &1735967392
 GameObject:
   m_ObjectHideFlags: 0

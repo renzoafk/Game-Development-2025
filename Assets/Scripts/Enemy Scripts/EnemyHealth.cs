@@ -22,6 +22,7 @@ public class EnemyHealth : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         originalColor = sr.color;
+
         currentHealth = maxHealth;
         Debug.Log($"[EnemyHealth] {name} spawned with {currentHealth} HP");
     }
@@ -32,7 +33,6 @@ public class EnemyHealth : MonoBehaviour
 
         currentHealth -= amount;
         Debug.Log($"[EnemyHealth] {name} took {amount} damage at {hitSourceWorldPos}. HP now {currentHealth}/{maxHealth}");
-
 
         StartCoroutine(HitFeedbackCoroutine(hitSourceWorldPos));
 
@@ -46,25 +46,29 @@ public class EnemyHealth : MonoBehaviour
     {
         Vector2 dir = ((Vector2)transform.position - hitSourceWorldPos).normalized;
 
-        rb.linearVelocity = Vector2.zero;
+        // start knockback
+        rb.velocity = Vector2.zero;
         rb.AddForce(dir * knockbackForce, ForceMode2D.Impulse);
 
+        // flash color
         sr.color = hitColor;
-
-        yield return new WaitForSeconds(knockbackTime);
-
-        rb.linearVelocity = Vector2.zero;
-
         yield return new WaitForSeconds(flashTime);
-
         sr.color = originalColor;
+
+        // finish knockback
+        yield return new WaitForSeconds(knockbackTime - flashTime);
+
+        // stop sliding
+        rb.velocity = Vector2.zero;
     }
 
     private void Die()
     {
         if (isDead) return;
         isDead = true;
+
         Debug.Log($"[EnemyHealth] {name} died");
+
         foreach (var col in GetComponents<Collider2D>())
             col.enabled = false;
 
