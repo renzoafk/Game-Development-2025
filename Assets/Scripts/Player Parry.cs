@@ -109,7 +109,6 @@ public class ParrySystem : MonoBehaviour
         Debug.Log("[Parry] Ready to parry again!");
     }
     
-    // Call this from enemy scripts
     public bool TryParryAttack(GameObject attacker)
     {
         if (isParrying)
@@ -121,34 +120,7 @@ public class ParrySystem : MonoBehaviour
     }
     
     // Debug GUI to see status
-    void OnGUI()
-    {
-        GUIStyle style = new GUIStyle(GUI.skin.label);
-        style.fontSize = 20;
-        style.normal.textColor = Color.white;
-        
-        // Background
-        GUI.Box(new Rect(10, 10, 300, 110), "");
-        
-        // Status text
-        GUI.Label(new Rect(20, 15, 280, 30), "🛡️ PARRY SYSTEM", style);
-        
-        if (isParrying)
-        {
-            GUI.Label(new Rect(20, 50, 280, 30), "Status: 🟢 PARRY ACTIVE", style);
-            GUI.Label(new Rect(20, 80, 280, 30), "Enemies will be parried!", style);
-        }
-        else if (canParry)
-        {
-            GUI.Label(new Rect(20, 50, 280, 30), "Status: 🟡 READY", style);
-            GUI.Label(new Rect(20, 80, 280, 30), "Press F to parry", style);
-        }
-        else
-        {
-            GUI.Label(new Rect(20, 50, 280, 30), "Status: 🔴 ON COOLDOWN", style);
-            GUI.Label(new Rect(20, 80, 280, 30), $"Wait {GetCooldownTime():F1}s", style);
-        }
-    }
+   
     
     float GetCooldownTime()
     {
