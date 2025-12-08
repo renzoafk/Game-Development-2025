@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f67d4c0fe2dbe3e44b76dae974a0c482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 3
+  maxHealth: 30
   knockbackForce: 5
   knockbackTime: 0.15
   flashTime: 0.1
@@ -394,8 +394,8 @@ Transform:
   m_GameObject: {fileID: 1305141}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 27.66, y: -65.5463, z: 0}
-  m_LocalScale: {x: 7.7352204, y: 6.3752756, z: 3.1604578}
+  m_LocalPosition: {x: 25.1902, y: -65.0823, z: 0}
+  m_LocalScale: {x: 9.095845, y: 7.566177, z: 3.1604578}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -15420,6 +15420,7 @@ GameObject:
   - component: {fileID: 1730557371}
   - component: {fileID: 1730557372}
   - component: {fileID: 1730557373}
+  - component: {fileID: 1730557374}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -15822,6 +15823,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   maxHealth: 5
+--- !u!114 &1730557374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730557360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1524be14aab8e641b240cf410cba50b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Parry
+  parryWindow: 0.2
+  parryCooldown: 0.5
+  enemyStunTime: 1
+  parryPoint: {fileID: 0}
+  parryEffectPrefab: {fileID: 0}
+  parrySuccessSound: {fileID: 0}
+  parryFailSound: {fileID: 0}
 --- !u!1 &1735967392
 GameObject:
   m_ObjectHideFlags: 0
