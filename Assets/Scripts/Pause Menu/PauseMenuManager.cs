@@ -5,17 +5,27 @@ using UnityEngine.SceneManagement;
 public class PauseMenuManager : MonoBehaviour
 {
     [Header("General")]
-    [SerializeField] private FadeManager _fadeManager;
+    [SerializeField] private FadeManager _fadeManager;   // optional, for fade to main menu
     public static PauseMenuManager _;
-    [SerializeField] private bool _debugMode;
+    [SerializeField] private bool _debugMode = false;
 
-    public enum PauseMenuButtons { Resume, MainMenu, Quit };
+    // Added Options + OptionsBack
+    public enum PauseMenuButtons
+    {
+        Resume,
+        MainMenu,
+        Quit,
+        Options,
+        OptionsBack
+    };
 
     [Header("Scenes")]
     [SerializeField] private string _mainMenuSceneName = "Main Menu";
 
     [Header("UI")]
-    [SerializeField] private GameObject pauseCanvas;   // parent with Resume, Main Menu, Quit
+    [SerializeField] private GameObject pauseCanvas;        // whole pause canvas
+    [SerializeField] private GameObject pauseMainPanel;     // panel with Resume / Options / Quit
+    [SerializeField] private GameObject pauseOptionsPanel;  // the Options prefab instance
 
     [Header("Audio")]
     [SerializeField] private AudioSource _clickSound;
@@ -24,6 +34,7 @@ public class PauseMenuManager : MonoBehaviour
 
     private void Awake()
     {
+        // singleton
         if (_ == null)
         {
             _ = this;
@@ -33,10 +44,12 @@ public class PauseMenuManager : MonoBehaviour
             Debug.LogError("There are more than 1 PauseMenuManager in the scene");
         }
 
+        // Start with pause UI hidden
         if (pauseCanvas != null)
-        {
-            pauseCanvas.SetActive(false);   // start hidden
-        }
+            pauseCanvas.SetActive(false);
+
+        if (pauseOptionsPanel != null)
+            pauseOptionsPanel.SetActive(false);
 
         Time.timeScale = 1f;
     }
@@ -72,21 +85,32 @@ public class PauseMenuManager : MonoBehaviour
             case PauseMenuButtons.Quit:
                 QuitGame();
                 break;
+
+            case PauseMenuButtons.Options:
+                ShowOptions();
+                break;
+
+            case PauseMenuButtons.OptionsBack:
+                ShowPauseMain();
+                break;
         }
     }
 
     private void DebugMessage(string message)
     {
         if (_debugMode)
-        {
             Debug.Log(message);
-        }
     }
+
+    // ====== PAUSE / RESUME ======
 
     public void PauseGame()
     {
         if (pauseCanvas != null)
             pauseCanvas.SetActive(true);
+
+        // show main panel, hide options when entering pause
+        ShowPauseMain();
 
         Time.timeScale = 0f;
         _isPaused = true;
@@ -101,9 +125,34 @@ public class PauseMenuManager : MonoBehaviour
         _isPaused = false;
     }
 
+    // ====== PANEL SWITCHING ======
+
+    private void ShowOptions()
+    {
+        if (pauseMainPanel != null)
+            pauseMainPanel.SetActive(false);
+
+        if (pauseOptionsPanel != null)
+            pauseOptionsPanel.SetActive(true);
+    }
+
+    private void ShowPauseMain()
+    {
+        if (pauseOptionsPanel != null)
+            pauseOptionsPanel.SetActive(false);
+
+        if (pauseMainPanel != null)
+            pauseMainPanel.SetActive(true);
+    }
+
+    // ====== BUTTON ACTIONS ======
+
     private void MainMenuClicked()
     {
+        DebugMessage("Returning to Main Menu");
+
         Time.timeScale = 1f;
+
         if (_fadeManager != null)
         {
             StartCoroutine(FadeOutAndThenLoadSceneRealtime(_mainMenuSceneName));
@@ -114,8 +163,10 @@ public class PauseMenuManager : MonoBehaviour
         }
     }
 
-    public void QuitGame()
+    private void QuitGame()
     {
+        DebugMessage("Quitting Game");
+
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.ExitPlaymode();
 #else
@@ -125,6 +176,7 @@ public class PauseMenuManager : MonoBehaviour
 
     private IEnumerator FadeOutAndThenLoadSceneRealtime(string sceneName)
     {
+        // Uses your existing FadeManager script (DoFade).
         _fadeManager.DoFade(0, 1, 0.5f, 0);
         yield return new WaitForSecondsRealtime(0.6f);
         SceneManager.LoadScene(sceneName);
