@@ -47,7 +47,7 @@ public class EnemyHealth : MonoBehaviour
         Vector2 dir = ((Vector2)transform.position - hitSourceWorldPos).normalized;
 
         // start knockback
-        rb.velocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
         rb.AddForce(dir * knockbackForce, ForceMode2D.Impulse);
 
         // flash color
@@ -59,7 +59,7 @@ public class EnemyHealth : MonoBehaviour
         yield return new WaitForSeconds(knockbackTime - flashTime);
 
         // stop sliding
-        rb.velocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
     }
 
     private void Die()

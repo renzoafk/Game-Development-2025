@@ -16,23 +16,20 @@ public class Attack : MonoBehaviour   // or PlayerAttack, keep whatever you alre
     [Header("Melee Hitbox")]
     [SerializeField] private GameObject meleeHitbox;
 
-    void Start()
+   void Start()
     {
-        anim = GetComponent<Animator>();
-        playerInput = GetComponent<PlayerInput>();
+    anim = GetComponent<Animator>();
+    playerInput = GetComponent<PlayerInput>();
 
-        if (playerInput != null)
-            attackAction = playerInput.actions["Attack"];
-        else
-        {
-            attackAction = new InputAction("Attack", InputActionType.Button, "<Mouse>/leftButton");
-            attackAction.Enable();
-        }
-
-        // make sure hitbox starts OFF
-        if (meleeHitbox != null)
-            meleeHitbox.SetActive(false);
+    if (playerInput != null)
+        attackAction = playerInput.actions["Attack"];
+    else
+    {
+        attackAction = new InputAction("Attack", InputActionType.Button, "<Mouse>/leftButton");
+        attackAction.Enable();
     }
+    }
+
 
     void Update()
     {
@@ -89,13 +86,30 @@ public class Attack : MonoBehaviour   // or PlayerAttack, keep whatever you alre
     public void EnableHitbox()
     {
         if (meleeHitbox != null)
-            meleeHitbox.SetActive(true);
+        {
+            MeleeHitbox hitboxScript = meleeHitbox.GetComponent<MeleeHitbox>();
+            if (hitboxScript != null)
+            {
+                                hitboxScript.EnableHitbox();
+
+            }
+            else
+                Debug.LogError("MeleeHitbox script not found on meleeHitbox GameObject!");
+        }
     }
 
     // Called when the swing is finished
     public void DisableHitbox()
     {
         if (meleeHitbox != null)
-            meleeHitbox.SetActive(false);
+        {
+            MeleeHitbox hitboxScript = meleeHitbox.GetComponent<MeleeHitbox>();
+            if (hitboxScript != null)
+            {
+                hitboxScript.DisableHitbox();
+            }
+            else
+                Debug.LogError("MeleeHitbox script not found on meleeHitbox GameObject!");
+        }
     }
 }

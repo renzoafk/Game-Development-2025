@@ -15,7 +15,7 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= amount;
         Debug.Log("Player took damage, current HP: " + currentHealth);
 
-        if (currentHealth <= 0)
+        if (currentHealth == 0)
         {
             Die();
         }
