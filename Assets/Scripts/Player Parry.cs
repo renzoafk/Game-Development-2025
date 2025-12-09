@@ -38,13 +38,13 @@ public class ParrySystem : MonoBehaviour
             }
         }
         
-        Debug.Log("🛡️ Parry System Ready! Press F to parry anytime.");
+        Debug.Log("🛡️ Parry System Ready! Press Right Click to parry anytime.");
     }
     
     void Update()
     {
         // PRESS F TO PARRY - ANYTIME!
-        if (Input.GetKeyDown(KeyCode.F) && canParry)
+        if (Input.GetMouseButton(1) && canParry)
         {
             StartParry();
         }
@@ -52,7 +52,7 @@ public class ParrySystem : MonoBehaviour
     
     void StartParry()
     {
-        Debug.Log("🎮 F KEY PRESSED - Starting Parry!");
+        Debug.Log("🎮 Right Click KEY PRESSED - Starting Parry!");
         
         // Set state
         isParrying = true;

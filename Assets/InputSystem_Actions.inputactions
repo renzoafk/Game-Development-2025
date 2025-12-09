@@ -486,7 +486,7 @@
                 {
                     "name": "",
                     "id": "02c6bd57-5d8d-4e09-a79d-c0fb0fd517c9",
-                    "path": "<Keyboard>/f",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
