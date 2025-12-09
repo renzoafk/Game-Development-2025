@@ -5,24 +5,26 @@ using UnityEngine.SceneManagement;
 public class DeathManager : MonoBehaviour
 {
     [Header("General")]
-    public static DeathManager Instance { get; private set; }  // Singleton
+    [SerializeField] private FadeManager _fadeManager;   // optional fade
     [SerializeField] private bool _debugMode = false;
-    [SerializeField] private FadeManager _fadeManager;         // optional
+
+    public static DeathManager Instance { get; private set; }
 
     [Header("Scenes")]
     [SerializeField] private string _mainMenuSceneName = "Main Menu";
 
     [Header("UI")]
-    [SerializeField] private GameObject _deathCanvas;          // death screen (You Died + buttons)
+    [SerializeField] private GameObject _deathCanvas;    // YOU DIED screen root
+    [SerializeField] private GameObject _playerHealthUI; // <-- NEW: health bar / HUD root
 
     [Header("Audio")]
-    [SerializeField] private AudioSource _clickSound;          // optional button click SFX
+    [SerializeField] private AudioSource _clickSound;    // optional button click SFX
 
     private bool _isShowing = false;
 
     private void Awake()
     {
-        // basic singleton
+        // simple singleton
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -30,39 +32,39 @@ public class DeathManager : MonoBehaviour
         }
         Instance = this;
 
-        // make sure death screen starts hidden
         if (_deathCanvas != null)
             _deathCanvas.SetActive(false);
     }
 
-    // ====== SHOW / HIDE ======
-
-    /// <summary>
-    /// Call this when the player dies.
-    /// </summary>
+    // --------------------------------------------------
+    // Called by PlayerHealth when HP hits 0
+    // --------------------------------------------------
     public void ShowDeathScreen()
     {
         if (_isShowing) return;
         _isShowing = true;
 
-        DebugMessage("Showing death screen");
+        DebugMessage("ShowDeathScreen");
+
+        // hide gameplay UI (health bar etc.)
+        if (_playerHealthUI != null)
+            _playerHealthUI.SetActive(false);
 
         if (_deathCanvas != null)
             _deathCanvas.SetActive(true);
 
-        // freeze gameplay
         Time.timeScale = 0f;
     }
 
-    // ====== BUTTONS ======
-
-    // Retry button
+    // --------------------------------------------------
+    // Buttons
+    // --------------------------------------------------
     public void Retry()
     {
         DebugMessage("Retry clicked");
         PlayClick();
 
-        Time.timeScale = 1f; // unfreeze so fade & load work
+        Time.timeScale = 1f;
 
         string sceneName = SceneManager.GetActiveScene().name;
 
@@ -72,7 +74,6 @@ public class DeathManager : MonoBehaviour
             SceneManager.LoadScene(sceneName);
     }
 
-    // Main Menu button
     public void LoadMainMenu()
     {
         DebugMessage("Main Menu clicked");
@@ -92,7 +93,6 @@ public class DeathManager : MonoBehaviour
             SceneManager.LoadScene(_mainMenuSceneName);
     }
 
-    // Quit button
     public void QuitGame()
     {
         DebugMessage("Quit clicked");
@@ -105,8 +105,9 @@ public class DeathManager : MonoBehaviour
 #endif
     }
 
-    // ====== HELPERS ======
-
+    // --------------------------------------------------
+    // Helpers
+    // --------------------------------------------------
     private void PlayClick()
     {
         if (_clickSound != null)
@@ -121,13 +122,10 @@ public class DeathManager : MonoBehaviour
 
     private IEnumerator FadeOutAndThenLoadSceneRealtime(string sceneName)
     {
-        // Uses your FadeManager.DoFade(startAlpha, endAlpha, duration, delayBeforeFade)
         if (_fadeManager != null)
             _fadeManager.DoFade(0f, 1f, 0.5f, 0f);
 
-        // realtime wait so it still works if timescale changes
         yield return new WaitForSecondsRealtime(0.6f);
-
         SceneManager.LoadScene(sceneName);
     }
 }
