@@ -1,5 +1,6 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class EnemyHealth : MonoBehaviour
     private Color originalColor;
     private bool isDead = false;
 
+    public UnityEvent OnDied;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -38,7 +40,8 @@ public class EnemyHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Die();
+            OnDied.Invoke();
+            //Die();
         }
     }
 
