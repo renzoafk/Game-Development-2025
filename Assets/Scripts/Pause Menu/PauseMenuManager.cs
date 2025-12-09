@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 public class PauseMenuManager : MonoBehaviour
 {
     [Header("General")]
-    [SerializeField] private FadeManager _fadeManager;   // optional, for fade to main menu
-    public static PauseMenuManager _;
+    [SerializeField] private FadeManager _fadeManager;
     [SerializeField] private bool _debugMode = false;
+    public static PauseMenuManager _;
 
-    // Added Options + OptionsBack
+    // IMPORTANT: now includes Options + OptionsBack
     public enum PauseMenuButtons
     {
         Resume,
@@ -17,14 +17,14 @@ public class PauseMenuManager : MonoBehaviour
         Quit,
         Options,
         OptionsBack
-    };
+    }
 
     [Header("Scenes")]
     [SerializeField] private string _mainMenuSceneName = "Main Menu";
 
     [Header("UI")]
     [SerializeField] private GameObject pauseCanvas;        // whole pause canvas
-    [SerializeField] private GameObject pauseMainPanel;     // panel with Resume / Options / Quit
+    [SerializeField] private GameObject pauseMainPanel;     // panel with Resume / Options / Main / Quit
     [SerializeField] private GameObject pauseOptionsPanel;  // the Options prefab instance
 
     [Header("Audio")]
@@ -34,17 +34,13 @@ public class PauseMenuManager : MonoBehaviour
 
     private void Awake()
     {
-        // singleton
-        if (_ == null)
+        if (_ != null && _ != this)
         {
-            _ = this;
+            Debug.LogError("There is more than one PauseMenuManager in this scene.");
         }
-        else
-        {
-            Debug.LogError("There are more than 1 PauseMenuManager in the scene");
-        }
+        _ = this;
 
-        // Start with pause UI hidden
+        // Make sure pause UI starts hidden
         if (pauseCanvas != null)
             pauseCanvas.SetActive(false);
 
@@ -65,9 +61,35 @@ public class PauseMenuManager : MonoBehaviour
         }
     }
 
+    private void PauseGame()
+    {
+        if (pauseCanvas != null)
+            pauseCanvas.SetActive(true);
+
+        // When we pause, show main panel and hide options
+        if (pauseMainPanel != null)
+            pauseMainPanel.SetActive(true);
+        if (pauseOptionsPanel != null)
+            pauseOptionsPanel.SetActive(false);
+
+        Time.timeScale = 0f;
+        _isPaused = true;
+        DebugMessage("Game paused");
+    }
+
+    public void ResumeGame()
+    {
+        if (pauseCanvas != null)
+            pauseCanvas.SetActive(false);
+
+        Time.timeScale = 1f;
+        _isPaused = false;
+        DebugMessage("Game resumed");
+    }
+
     public void PauseMenuButtonClicked(PauseMenuButtons buttonClicked)
     {
-        DebugMessage("Pause button clicked: " + buttonClicked);
+        DebugMessage("Pause menu button clicked: " + buttonClicked);
 
         if (_clickSound != null)
             _clickSound.Play();
@@ -96,65 +118,38 @@ public class PauseMenuManager : MonoBehaviour
         }
     }
 
-    private void DebugMessage(string message)
-    {
-        if (_debugMode)
-            Debug.Log(message);
-    }
-
-    // ====== PAUSE / RESUME ======
-
-    public void PauseGame()
-    {
-        if (pauseCanvas != null)
-            pauseCanvas.SetActive(true);
-
-        // show main panel, hide options when entering pause
-        ShowPauseMain();
-
-        Time.timeScale = 0f;
-        _isPaused = true;
-    }
-
-    public void ResumeGame()
-    {
-        if (pauseCanvas != null)
-            pauseCanvas.SetActive(false);
-
-        Time.timeScale = 1f;
-        _isPaused = false;
-    }
-
-    // ====== PANEL SWITCHING ======
-
     private void ShowOptions()
     {
+        DebugMessage("Show Options panel");
         if (pauseMainPanel != null)
             pauseMainPanel.SetActive(false);
-
         if (pauseOptionsPanel != null)
             pauseOptionsPanel.SetActive(true);
     }
 
     private void ShowPauseMain()
     {
+        DebugMessage("Back from Options to main pause panel");
         if (pauseOptionsPanel != null)
             pauseOptionsPanel.SetActive(false);
-
         if (pauseMainPanel != null)
             pauseMainPanel.SetActive(true);
     }
 
-    // ====== BUTTON ACTIONS ======
+    // =========================
+    // BUTTON ACTIONS
+    // =========================
 
     private void MainMenuClicked()
     {
         DebugMessage("Returning to Main Menu");
 
+        // Un-pause before scene change
         Time.timeScale = 1f;
 
         if (_fadeManager != null)
         {
+            // CORRECT: use the coroutine you already have
             StartCoroutine(FadeOutAndThenLoadSceneRealtime(_mainMenuSceneName));
         }
         else
@@ -174,11 +169,28 @@ public class PauseMenuManager : MonoBehaviour
 #endif
     }
 
+    // =========================
+    // FADE + LOAD (REALTIME)
+    // =========================
+
     private IEnumerator FadeOutAndThenLoadSceneRealtime(string sceneName)
     {
-        // Uses your existing FadeManager script (DoFade).
-        _fadeManager.DoFade(0, 1, 0.5f, 0);
+        if (_fadeManager != null)
+            _fadeManager.DoFade(0, 1, 0.5f, 0);
+
+        // Wait using realtime so pause Time.timeScale = 0 doesn't matter
         yield return new WaitForSecondsRealtime(0.6f);
+
         SceneManager.LoadScene(sceneName);
+    }
+
+    // =========================
+    // DEBUG HELPER
+    // =========================
+
+    private void DebugMessage(string msg)
+    {
+        if (_debugMode)
+            Debug.Log("[PauseMenuManager] " + msg);
     }
 }
