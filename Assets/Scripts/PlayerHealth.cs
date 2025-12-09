@@ -4,6 +4,10 @@ public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 5;
     private int currentHealth;
+    private bool isDead = false;
+
+    public int CurrentHealth => currentHealth;
+    public int MaxHealth => maxHealth;
 
     private void Awake()
     {
@@ -12,10 +16,13 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        if (isDead) return;
+
         currentHealth -= amount;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         Debug.Log("Player took damage, current HP: " + currentHealth);
 
-        if (currentHealth == 0)
+        if (currentHealth <= 0)
         {
             Die();
         }
@@ -23,7 +30,15 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("Player died!");
-        // TODO restart scene or trigger death animation
+        if (isDead) return;
+        isDead = true;
+
+        // trigger animation etc...
+
+        if (DeathManager.Instance != null)
+            DeathManager.Instance.ShowDeathScreen();
+        else
+            Time.timeScale = 0f; // fallback
     }
+
 }
