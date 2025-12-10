@@ -22214,16 +22214,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22e168f00fc4c734ca67b7aedc054884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  moveSpeed: 5
-  jumpForce: 9.5
-  jumpCutMultiplier: 0.65
-  fallGravityMultiplier: 1.6
-  lowJumpGravityMultiplier: 1.2
-  groundCheck: {fileID: 0}
-  groundCheckSize: {x: 0.8, y: 0.1}
-  groundLayer:
-    m_Bits: 0
-  originalMoveSpeed: 0
 --- !u!95 &1730557366
 Animator:
   serializedVersion: 7
@@ -47486,19 +47476,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1674306721608990968, guid: 7c9ccf54d9e4aaa4fb2901f2a50276db, type: 3}
       propertyPath: m_LocalScale.x
-      value: 6.3197684
+      value: 6.5350647
       objectReference: {fileID: 0}
     - target: {fileID: 1674306721608990968, guid: 7c9ccf54d9e4aaa4fb2901f2a50276db, type: 3}
       propertyPath: m_LocalScale.y
-      value: 4.438153
+      value: 6.7144814
+      objectReference: {fileID: 0}
+    - target: {fileID: 1674306721608990968, guid: 7c9ccf54d9e4aaa4fb2901f2a50276db, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.6272416
       objectReference: {fileID: 0}
     - target: {fileID: 1674306721608990968, guid: 7c9ccf54d9e4aaa4fb2901f2a50276db, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -59.12
+      value: -59.0661
       objectReference: {fileID: 0}
     - target: {fileID: 1674306721608990968, guid: 7c9ccf54d9e4aaa4fb2901f2a50276db, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -16.571388
+      value: -16.0023
       objectReference: {fileID: 0}
     - target: {fileID: 1674306721608990968, guid: 7c9ccf54d9e4aaa4fb2901f2a50276db, type: 3}
       propertyPath: m_LocalPosition.z
@@ -47531,6 +47525,18 @@ PrefabInstance:
     - target: {fileID: 1674306721608990968, guid: 7c9ccf54d9e4aaa4fb2901f2a50276db, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072997863372533640, guid: 7c9ccf54d9e4aaa4fb2901f2a50276db, type: 3}
+      propertyPath: m_Size.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072997863372533640, guid: 7c9ccf54d9e4aaa4fb2901f2a50276db, type: 3}
+      propertyPath: m_Size.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072997863372533640, guid: 7c9ccf54d9e4aaa4fb2901f2a50276db, type: 3}
+      propertyPath: m_Direction
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6782239033526076946, guid: 7c9ccf54d9e4aaa4fb2901f2a50276db, type: 3}
       propertyPath: m_Name
