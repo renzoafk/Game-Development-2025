@@ -1,41 +1,34 @@
-using UnityEngine;
-using UnityEngine.InputSystem;
+﻿using UnityEngine;
+using UnityEngine.InputSystem;   // ok if you are using the new Input System
 
 public class Attack : MonoBehaviour
 {
-    public bool canAttack = true;    // <<------ ADD THIS
+    [Header("General")]
+    public bool canAttack = true;
+    public float comboResetTime = 1f;
+
+    [Header("Hitbox")]
+    [SerializeField] private GameObject meleeHitbox;   // your hitbox object
 
     private Animator anim;
-    private PlayerInput playerInput;
-    private InputAction attackAction;
 
+    // combo state
     private int comboStep = 0;
     private bool canClick = true;
-    public float comboResetTime = 1f;
     private float comboTimer = 0f;
 
-    [Header("Melee Hitbox")]
-    [SerializeField] private GameObject meleeHitbox;
-
-    void Start()
+    void Awake()
     {
         anim = GetComponent<Animator>();
-        playerInput = GetComponent<PlayerInput>();
-
-        if (playerInput != null)
-            attackAction = playerInput.actions["Attack"];
-        else
-        {
-            attackAction = new InputAction("Attack", InputActionType.Button, "<Mouse>/leftButton");
-            attackAction.Enable();
-        }
+        if (anim == null)
+            Debug.LogError("[Attack] No Animator found on this GameObject!");
     }
 
     void Update()
     {
-        if (!canAttack)                      // <<------ ADD THIS
-            return;
+        if (!canAttack) return;
 
+        // combo timeout
         if (comboStep > 0)
         {
             comboTimer += Time.deltaTime;
@@ -43,53 +36,56 @@ public class Attack : MonoBehaviour
                 ResetCombo();
         }
 
-        if (attackAction != null && attackAction.triggered && canClick)
+        // ✅ Always listen for left click, regardless of PlayerInput setup
+        bool leftClick =
+            (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame) // new Input System
+            || Input.GetMouseButtonDown(0);                                         // old Input Manager fallback
+
+        if (leftClick && canClick)
         {
+            Debug.Log("[Attack] Left click detected, starting attack");
             TriggerNextAttack();
-            Debug.Log("CLICK!");
         }
     }
 
-    void TriggerNextAttack()
+    private void TriggerNextAttack()
     {
         canClick = false;
         comboTimer = 0f;
 
         comboStep++;
-        if (comboStep > 3) comboStep = 3;
+        if (comboStep > 3) comboStep = 3;   // max 3-hit combo, adjust if you want
 
-        anim.SetInteger("attackIndex", comboStep);
-        anim.SetTrigger("Attack");
+        if (anim != null)
+        {
+            anim.SetInteger("attackIndex", comboStep);  // your animator int
+            anim.SetTrigger("Attack");                  // your animator trigger
+        }
     }
 
+    // call this from an Animation Event at the point where the next click is allowed
     public void AllowNextClick()
     {
         canClick = true;
     }
 
-    void ResetCombo()
+    private void ResetCombo()
     {
         comboStep = 0;
         comboTimer = 0f;
-        anim.SetInteger("attackIndex", 0);
         canClick = true;
+
+        if (anim != null)
+            anim.SetInteger("attackIndex", 0);
     }
 
-    void OnDisable()
-    {
-        if (attackAction != null)
-            attackAction.Disable();
-    }
-
+    // hitbox control, also usually called by animation events
     public void EnableHitbox()
     {
         if (meleeHitbox != null)
         {
-            MeleeHitbox hitboxScript = meleeHitbox.GetComponent<MeleeHitbox>();
-            if (hitboxScript != null)
-                hitboxScript.EnableHitbox();
-            else
-                Debug.LogError("MeleeHitbox script not found on meleeHitbox GameObject!");
+            var hb = meleeHitbox.GetComponent<MeleeHitbox>();
+            if (hb != null) hb.EnableHitbox();
         }
     }
 
@@ -97,11 +93,8 @@ public class Attack : MonoBehaviour
     {
         if (meleeHitbox != null)
         {
-            MeleeHitbox hitboxScript = meleeHitbox.GetComponent<MeleeHitbox>();
-            if (hitboxScript != null)
-                hitboxScript.DisableHitbox();
-            else
-                Debug.LogError("MeleeHitbox script not found on meleeHitbox GameObject!");
+            var hb = meleeHitbox.GetComponent<MeleeHitbox>();
+            if (hb != null) hb.DisableHitbox();
         }
     }
 }

@@ -44,6 +44,11 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private Attack playerAttack;   // your attack script
 
+    [Header("Player animation and audio")]
+    [SerializeField] private Animator playerAnimator;
+    [SerializeField] private string walkBoolName = "IsWalking"; // change if your parameter has a different name
+    [SerializeField] private AudioSource footstepAudio;
+
     // Full dialogue state
     private Dialogue currentDialogue;
     private int index = 0;
@@ -160,24 +165,59 @@ public class DialogueManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Freezes or unfreezes player movement and attack.
+    /// Public helper so other scripts can freeze or unfreeze the player during fades or cutscenes.
     /// </summary>
-   private void FreezePlayer(bool frozen)
+    public void SetPlayerFrozenExternally(bool frozen)
     {
-        
-    if (playerMovement == null)
-        playerMovement = FindFirstObjectByType<PlayerMovement>();
-
-    if (playerAttack == null)
-        playerAttack = FindFirstObjectByType<Attack>();
-
-    if (playerMovement != null)
-        playerMovement.enabled = !frozen;
-
-    if (playerAttack != null)
-        playerAttack.canAttack = !frozen;   // ✔ Safe (does NOT disable script)
+        FreezePlayer(frozen);
     }
 
+    /// <summary>
+    /// Freezes or unfreezes player movement, attack, and walk animation.
+    /// </summary>
+    private void FreezePlayer(bool frozen)
+    {
+        // Auto find if not wired in the Inspector
+        if (playerMovement == null)
+            playerMovement = FindObjectOfType<PlayerMovement>();
+        if (playerAttack == null)
+            playerAttack = FindObjectOfType<Attack>();
+
+        // Enable / disable movement + attack scripts
+        if (playerMovement != null)
+            playerMovement.enabled = !frozen;
+
+        if (playerAttack != null)
+            playerAttack.enabled = !frozen;
+
+        // Grab animator and audio from the player if not set
+        if (playerMovement != null)
+        {
+            if (playerAnimator == null)
+                playerAnimator = playerMovement.GetComponent<Animator>();
+
+            if (footstepAudio == null)
+                footstepAudio = playerMovement.GetComponent<AudioSource>();
+
+            Rigidbody2D rb = playerMovement.GetComponent<Rigidbody2D>();
+            if (rb != null && frozen)
+            {
+                // Stop motion so the player does not glide
+                rb.linearVelocity = Vector2.zero;
+                rb.angularVelocity = 0f;
+            }
+        }
+
+        // When freezing, make sure walk animation and footsteps stop
+        if (frozen)
+        {
+            if (playerAnimator != null && !string.IsNullOrEmpty(walkBoolName))
+                playerAnimator.SetBool(walkBoolName, false);
+
+            if (footstepAudio != null)
+                footstepAudio.Stop();
+        }
+    }
 
     // =========================================================
     // AMBIENT ONE SHOT LINES (no freeze, auto hide)
