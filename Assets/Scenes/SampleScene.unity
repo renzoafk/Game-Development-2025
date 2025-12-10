@@ -6986,7 +6986,7 @@ Transform:
   m_GameObject: {fileID: 653967402}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.7698149, y: -64.83891, z: 0}
+  m_LocalPosition: {x: -0.66472244, y: -67.19401, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12418,12 +12418,9 @@ GameObject:
   - component: {fileID: 1100109883}
   - component: {fileID: 1100109882}
   - component: {fileID: 1100109881}
-  - component: {fileID: 1100109880}
-  - component: {fileID: 1100109879}
-  - component: {fileID: 1100109878}
   - component: {fileID: 1100109877}
   - component: {fileID: 1100109876}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bug Attack_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12491,58 +12488,9 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.9531262, y: 1.34375}
+  m_Offset: {x: 0.16138285, y: 0}
+  m_Size: {x: 1.3496944, y: 1.7717668}
   m_Direction: 0
---- !u!114 &1100109878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1100109874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c34701ede822da44cb7356aa362a59a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StarfishEnemyAI
-  attackRange: 2
-  attackCooldown: 1
-  attackTrigger: Attack
---- !u!114 &1100109879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1100109874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f67d4c0fe2dbe3e44b76dae974a0c482, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 3
-  knockbackForce: 5
-  knockbackTime: 0.15
-  flashTime: 0.15
-  hitColor: {r: 1, g: 0, b: 0, a: 1}
-  OnDied:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1100109880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1100109874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eeb81b76d516dec47be940e888bc874e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyDamagePlayer
-  contactDamage: 1
-  damageCooldown: 0.5
 --- !u!50 &1100109881
 Rigidbody2D:
   serializedVersion: 5
@@ -13163,7 +13111,7 @@ MonoBehaviour:
   nameText: {fileID: 1024624871}
   dialogueText: {fileID: 1039981379}
   portraitImage: {fileID: 0}
-  playerMovement: {fileID: 1730557365}
+  playerMovement: {fileID: 0}
   playerAttack: {fileID: 1730557371}
 --- !u!4 &1150686689
 Transform:
@@ -22816,7 +22764,6 @@ GameObject:
   - component: {fileID: 1730557362}
   - component: {fileID: 1730557361}
   - component: {fileID: 1730557363}
-  - component: {fileID: 1730557365}
   - component: {fileID: 1730557366}
   - component: {fileID: 1730557367}
   - component: {fileID: 1730557368}
@@ -22901,7 +22848,7 @@ Transform:
   m_GameObject: {fileID: 1730557360}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7, y: -63.9, z: 0}
+  m_LocalPosition: {x: -0.56, y: -66.29, z: 0}
   m_LocalScale: {x: 3.1999998, y: 3.1999998, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -22936,28 +22883,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1730557365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1730557360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22e168f00fc4c734ca67b7aedc054884, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  moveSpeed: 5
-  jumpForce: 9.5
-  jumpCutMultiplier: 0.65
-  fallGravityMultiplier: 1.6
-  lowJumpGravityMultiplier: 1.2
-  groundCheck: {fileID: 0}
-  groundCheckSize: {x: 0.8, y: 0.1}
-  groundLayer:
-    m_Bits: 0
-  originalMoveSpeed: 0
 --- !u!95 &1730557366
 Animator:
   serializedVersion: 7
@@ -24294,9 +24219,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1782873622}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bug Enemy
-  m_TagString: Untagged
+  m_TagString: Mini Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
