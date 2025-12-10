@@ -179,9 +179,9 @@ public class DialogueManager : MonoBehaviour
     {
         // Auto find if not wired in the Inspector
         if (playerMovement == null)
-            playerMovement = FindObjectOfType<PlayerMovement>();
+            playerMovement = FindAnyObjectByType<PlayerMovement>();
         if (playerAttack == null)
-            playerAttack = FindObjectOfType<Attack>();
+            playerAttack = FindAnyObjectByType<Attack>();
 
         // Enable / disable movement + attack scripts
         if (playerMovement != null)
