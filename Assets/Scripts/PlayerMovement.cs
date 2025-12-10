@@ -6,18 +6,18 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] public float moveSpeed = 5f;
-    [SerializeField] private float jumpForce = 9.5f;   // a bit higher so we beat the stronger gravity
+    [SerializeField] private float jumpForce = 9.5f;
 
     [Header("Variable Jump")]
     [SerializeField] private float jumpCutMultiplier = 0.65f;
 
     [Header("Better Gravity")]
-    [SerializeField] private float fallGravityMultiplier = 1.6f;    // more pull when falling
-    [SerializeField] private float lowJumpGravityMultiplier = 1.2f; // small extra pull if we let go early
+    [SerializeField] private float fallGravityMultiplier = 1.6f;
+    [SerializeField] private float lowJumpGravityMultiplier = 1.2f;
 
     [Header("Ground Check")]
     [SerializeField] private Transform groundCheck;
-    [SerializeField] private Vector2 groundCheckSize = new Vector2(0.8f, 0.1f);  // width, height of box
+    [SerializeField] private Vector2 groundCheckSize = new Vector2(0.8f, 0.1f);
     [SerializeField] private LayerMask groundLayer;
 
     [HideInInspector] public float originalMoveSpeed;
@@ -33,6 +33,9 @@ public class PlayerMovement : MonoBehaviour
     private InputAction jumpAction;
 
     private Animator animator;
+
+    // NEW: can the player move?
+    private bool canMove = true;
 
     private Vector2 Velocity
     {
@@ -77,8 +80,30 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    // NEW: external scripts call this to freeze / unfreeze
+    public void SetCanMove(bool value)
+    {
+        canMove = value;
+
+        if (!canMove)
+        {
+            // clear input and horizontal velocity
+            moveInput = Vector2.zero;
+            Velocity = new Vector2(0f, rb.linearVelocity.y);
+            jumpRequested = false;
+            jumpHeld = false;
+
+            if (animator != null)
+            {
+                animator.SetFloat("Speed", 0f);
+            }
+        }
+    }
+
     private void OnJumpStarted(InputAction.CallbackContext ctx)
     {
+        if (!canMove) return;
+
         if (IsGrounded)
             jumpRequested = true;
 
@@ -87,21 +112,32 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnJumpCanceled(InputAction.CallbackContext ctx)
     {
+        if (!canMove) return;
+
         jumpHeld = false;
 
-        // cut the jump a bit if we released while going up
         if (rb.linearVelocity.y > 0f)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * jumpCutMultiplier);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x,
+                                            rb.linearVelocity.y * jumpCutMultiplier);
         }
     }
 
     void Update()
     {
+        if (!canMove)
+        {
+            // keep animator grounded but do nothing else
+            if (animator != null)
+            {
+                animator.SetFloat("Speed", 0f);
+            }
+            return;
+        }
+
         if (moveAction != null)
             moveInput = moveAction.ReadValue<Vector2>();
 
-        // ground check using a box, wider than a circle so edges feel better
         Vector2 checkPos = groundCheck != null ? (Vector2)groundCheck.position : (Vector2)transform.position;
         IsGrounded = Physics2D.OverlapBox(checkPos, groundCheckSize, 0f, groundLayer);
 
@@ -112,7 +148,6 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("verticalSpeed", rb.linearVelocity.y);
         }
 
-        // flip player sprite based on movement
         if (moveInput.x != 0)
         {
             Vector3 scale = transform.localScale;
@@ -123,6 +158,13 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!canMove)
+        {
+            // no movement while frozen
+            Velocity = new Vector2(0f, rb.linearVelocity.y);
+            return;
+        }
+
         // horizontal
         Velocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
 
@@ -136,13 +178,13 @@ public class PlayerMovement : MonoBehaviour
         // extra gravity controls
         if (rb.linearVelocity.y < 0f)
         {
-            // falling, pull harder
-            rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (fallGravityMultiplier - 1f) * Time.fixedDeltaTime;
+            rb.linearVelocity += Vector2.up * Physics2D.gravity.y *
+                                 (fallGravityMultiplier - 1f) * Time.fixedDeltaTime;
         }
         else if (rb.linearVelocity.y > 0f && !jumpHeld)
         {
-            // going up but we let go, pull a bit harder to end the jump sooner
-            rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (lowJumpGravityMultiplier - 1f) * Time.fixedDeltaTime;
+            rb.linearVelocity += Vector2.up * Physics2D.gravity.y *
+                                 (lowJumpGravityMultiplier - 1f) * Time.fixedDeltaTime;
         }
     }
 

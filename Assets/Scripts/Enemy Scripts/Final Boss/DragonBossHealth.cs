@@ -30,11 +30,18 @@ public class DragonBossHealth : MonoBehaviour
 
     StartCoroutine(DamageFlash());
 
-    if (currentHealth <= 0)
-    {
-        Debug.Log("DRAGON HAS DIED!");
-        bossAI.KillBoss();
-    }
+        if (currentHealth <= 0)
+        {
+            Debug.Log("DRAGON HAS DIED!");
+            bossAI.KillBoss();
+
+            // Show victory screen after the last boss dies
+            if (VictoryManager.Instance != null)
+            {
+                VictoryManager.Instance.ShowVictoryScreen();
+            }
+        }
+
     }
 
 

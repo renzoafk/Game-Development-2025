@@ -10,7 +10,7 @@ public class Door : MonoBehaviour
     [Header("Animation")]
     [SerializeField] private Animator animator;
     [SerializeField] private string openTriggerName = "Open";
-    [SerializeField] private AnimationClip openClip;   // <— add this
+    [SerializeField] private AnimationClip openClip;
 
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
@@ -57,9 +57,20 @@ public class Door : MonoBehaviour
         {
             if (currentPlayer.HasKey(requiredKeyId))
             {
-                StartCoroutine(OpenAndDestroyCoroutine());
+                OpenDoor();   // use the same method used by the machine
             }
         }
+    }
+
+    /// <summary>
+    /// Public method so the FinalMachine can open this door.
+    /// Plays animation, sound, disables colliders, then destroys the door.
+    /// </summary>
+    public void OpenDoor()
+    {
+        if (isOpen) return;
+
+        StartCoroutine(OpenAndDestroyCoroutine());
     }
 
     private IEnumerator OpenAndDestroyCoroutine()
