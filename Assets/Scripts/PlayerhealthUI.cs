@@ -1,101 +1,50 @@
+using Microlight.MicroBar;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class PlayerHealthUI : MonoBehaviour
+// Simple standalone driver for a MicroBar (not required if you're using PlayerHealthUI)
+public class MicrobarHealth : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private PlayerHealth playerHealth;
-    [SerializeField] private Slider healthSlider;
-    [SerializeField] private Image fillImage; // optional, just for color
-    [SerializeField] private Gradient healthGradient; // Better than Lerp for smooth color transition
+    [SerializeField] private MicroBar microBar;
+
+    [Header("Health Settings")]
+    [SerializeField] private int maxHealth = 5;
+    [SerializeField] private int currentHealth = 5;
 
     private void Awake()
     {
-        // Auto-hook if not set in inspector
-        if (playerHealth == null)
-            playerHealth = FindFirstObjectByType<PlayerHealth>();
-    }
+        if (microBar == null)
+            microBar = GetComponent<MicroBar>();
 
-    private void OnEnable()
-    {
-        if (playerHealth != null)
-            playerHealth.OnHealthChanged += HandleHealthChanged;
-    }
-
-    private void OnDisable()
-    {
-        if (playerHealth != null)
-            playerHealth.OnHealthChanged -= HandleHealthChanged;
-    }
-
-    private void Start()
-    {
-        if (playerHealth == null || healthSlider == null) return;
-
-        // Initialize slider values
-        healthSlider.minValue = 0;
-        healthSlider.maxValue = playerHealth.MaxHealth;
-        healthSlider.value = playerHealth.CurrentHealth;
-        
-        // Update color immediately
-        UpdateHealthColor();
-    }
-
-    private void HandleHealthChanged(int current, int max)
-    {
-        if (healthSlider == null) return;
-
-        healthSlider.maxValue = max;
-        healthSlider.value = current;
-        
-        UpdateHealthColor();
-    }
-    
-    private void UpdateHealthColor()
-    {
-        if (fillImage == null || playerHealth == null) return;
-        
-        if (playerHealth.CurrentHealth <= 0)
+        if (microBar == null)
         {
-            // Hide the bar completely when dead
-            fillImage.enabled = false;
+            Debug.LogWarning("MicrobarHealth: Missing MicroBar reference.", this);
+            enabled = false;
+            return;
         }
-        else
-        {
-            fillImage.enabled = true;
-            
-            float healthPercentage = (float)playerHealth.CurrentHealth / playerHealth.MaxHealth;
-            
-            // Method 1: Using Gradient (recommended)
-            if (healthGradient != null)
-            {
-                fillImage.color = healthGradient.Evaluate(healthPercentage);
-            }
-            // Method 2: Using Color.Lerp (fallback)
-            else
-            {
-                fillImage.color = Color.Lerp(Color.red, Color.green, healthPercentage);
-            }
-        }
+
+        // Initialize bar and set starting value (no animation)
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        microBar.Initialize(maxHealth);
+        microBar.UpdateBar(currentHealth, true); // skipAnimation = true
     }
-    
-    // Optional: Call this from inspector button for testing
-    [ContextMenu("Test Health UI")]
-    public void TestHealthUI()
+
+    // Public helpers if you ever want to drive this script directly
+    public void Damage(int amount)
     {
-        if (playerHealth != null)
-        {
-            // Simulate damage
-            playerHealth.TakeDamage(1);
-        }
+        SetHealth(currentHealth - amount);
     }
-    
-    // Optional: Add this for debug info in Editor
-    #if UNITY_EDITOR
-    private void OnValidate()
+
+    public void Heal(int amount)
     {
-        if (playerHealth == null)
-            playerHealth = FindFirstObjectByType<PlayerHealth>();
+        SetHealth(currentHealth + amount);
     }
-    #endif
+
+    public void SetHealth(int value)
+    {
+        if (microBar == null) return;
+
+        currentHealth = Mathf.Clamp(value, 0, maxHealth);
+        microBar.UpdateBar(currentHealth); // uses asset's default animation logic
+    }
 }

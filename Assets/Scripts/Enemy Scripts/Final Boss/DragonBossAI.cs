@@ -210,7 +210,19 @@ public class DragonBossAI : MonoBehaviour
         if (isDead) return;
 
         isDead = true;
-        animatorController.PlayDeath();
         StopAllCoroutines();
+        StartCoroutine(DeathRoutine());
+    }
+
+    private IEnumerator DeathRoutine()
+    {
+        animatorController.PlayDeath();
+
+        // TODO: set this to your death animation's length
+        float deathAnimLength = 2.0f;
+        yield return new WaitForSeconds(deathAnimLength);
+
+        if (VictoryManager.Instance != null)
+            VictoryManager.Instance.ShowVictoryScreen();
     }
 }
