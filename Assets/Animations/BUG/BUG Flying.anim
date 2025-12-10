@@ -22,27 +22,29 @@ AnimationClip:
     curve:
     - time: 0
       value: {fileID: -599444091780840538, guid: 1c6fd46d6c036b44fa0a6918838b5044, type: 3}
-    - time: 0.05
+    - time: 0
+      value: {fileID: -599444091780840538, guid: 1c6fd46d6c036b44fa0a6918838b5044, type: 3}
+    - time: 0
       value: {fileID: -254654408493685415, guid: 1c6fd46d6c036b44fa0a6918838b5044, type: 3}
-    - time: 0.083333336
+    - time: 0.05
       value: {fileID: -2314127539764852785, guid: 1c6fd46d6c036b44fa0a6918838b5044, type: 3}
-    - time: 0.13333334
+    - time: 0.1
       value: {fileID: -2250426749875950899, guid: 1c6fd46d6c036b44fa0a6918838b5044, type: 3}
-    - time: 0.18333334
+    - time: 0.15
       value: {fileID: -661255730606292386, guid: 1c6fd46d6c036b44fa0a6918838b5044, type: 3}
-    - time: 0.21666667
+    - time: 0.2
       value: {fileID: -7659147466200129024, guid: 1c6fd46d6c036b44fa0a6918838b5044, type: 3}
-    - time: 0.26666668
+    - time: 0.25
       value: {fileID: 623578582124979297, guid: 1c6fd46d6c036b44fa0a6918838b5044, type: 3}
-    - time: 0.31666666
+    - time: 0.3
       value: {fileID: 1246381779842105783, guid: 1c6fd46d6c036b44fa0a6918838b5044, type: 3}
-    - time: 0.36666667
+    - time: 0.33333334
       value: {fileID: -2507176549862738652, guid: 1c6fd46d6c036b44fa0a6918838b5044, type: 3}
-    - time: 0.4
+    - time: 0.38333333
       value: {fileID: -4523571798832325322, guid: 1c6fd46d6c036b44fa0a6918838b5044, type: 3}
-    - time: 0.45
+    - time: 0.43333334
       value: {fileID: 9163557644443572039, guid: 1c6fd46d6c036b44fa0a6918838b5044, type: 3}
-    - time: 0.5
+    - time: 0.48333332
       value: {fileID: -5561341043711317349, guid: 1c6fd46d6c036b44fa0a6918838b5044, type: 3}
     - time: 0.53333336
       value: {fileID: 8057994641869503679, guid: 1c6fd46d6c036b44fa0a6918838b5044, type: 3}
@@ -70,6 +72,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
+    - {fileID: -599444091780840538, guid: 1c6fd46d6c036b44fa0a6918838b5044, type: 3}
     - {fileID: -599444091780840538, guid: 1c6fd46d6c036b44fa0a6918838b5044, type: 3}
     - {fileID: -254654408493685415, guid: 1c6fd46d6c036b44fa0a6918838b5044, type: 3}
     - {fileID: -2314127539764852785, guid: 1c6fd46d6c036b44fa0a6918838b5044, type: 3}

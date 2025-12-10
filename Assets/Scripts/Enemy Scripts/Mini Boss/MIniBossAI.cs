@@ -17,16 +17,8 @@ public class MiniBossAI : MonoBehaviour
     private Transform player;
     private float lastAttackTime;
 
-    [Header("Patrol Limit")]
-    public float patrolRadius = 5f;
-    private Vector3 homePosition;
-
-
     private void Start()
     {
-
-        homePosition = transform.position;
-
         anim = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
@@ -54,18 +46,16 @@ public class MiniBossAI : MonoBehaviour
 
     void FlyTowardsPlayer()
     {
-        Vector2 dir = (player.position - transform.position).normalized;
+        Vector2 direction = (player.position - transform.position).normalized;
 
-        // Move only if within patrol area
-        if (Vector2.Distance(transform.position, homePosition) < patrolRadius)
-        {
-            transform.position += (Vector3)dir * moveSpeed * Time.deltaTime;
-        }
+        transform.position += (Vector3)direction * moveSpeed * Time.deltaTime;
 
+        // Hover effect
         HoverInPlace();
-        Flip(dir.x);
-    }
 
+        // Flip to face player
+        transform.localScale = new Vector3(direction.x >= 0 ? 1 : -1, 1, 1);
+    }
 
     void HoverInPlace()
     {
@@ -73,13 +63,5 @@ public class MiniBossAI : MonoBehaviour
         transform.position = new Vector3(transform.position.x,
                                          transform.position.y + hover * Time.deltaTime,
                                          transform.position.z);
-    }
-
-    void Flip(float dirX)
-    {
-        if (dirX < 0)
-            transform.localScale = new Vector3(-1, 1, 1);
-        else if (dirX > 0)
-            transform.localScale = new Vector3(1, 1, 1);
     }
 }
