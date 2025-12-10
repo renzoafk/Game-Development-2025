@@ -6,7 +6,7 @@ public class IntroDialogueFreeze : MonoBehaviour
 
     private void Awake()
     {
-        movement = FindObjectOfType<PlayerMovement>();
+        movement = FindFirstObjectByType<PlayerMovement>();
 
         if (movement != null)
             movement.SetCanMove(false);

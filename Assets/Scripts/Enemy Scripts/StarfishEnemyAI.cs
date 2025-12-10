@@ -5,7 +5,6 @@ public class StarfishEnemyAI : MonoBehaviour
 {
     [SerializeField] private float attackRange = 2f;
     [SerializeField] private float attackCooldown = 1.0f;
-    [SerializeField] private string attackTrigger = "Attack";
 
 
     private Animator anim;
