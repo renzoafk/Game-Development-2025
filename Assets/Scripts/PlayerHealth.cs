@@ -93,6 +93,17 @@ public class PlayerHealth : MonoBehaviour
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
 
+    public void HealToFull()
+    {
+    if (isDead) return;
+
+    currentHealth = maxHealth;
+    Debug.Log("Player healed to FULL HP: " + currentHealth);
+
+    OnHealthChanged?.Invoke(currentHealth, maxHealth);
+    }
+
+
     // Optional: Set health directly
     public void SetHealth(int newHealth)
     {

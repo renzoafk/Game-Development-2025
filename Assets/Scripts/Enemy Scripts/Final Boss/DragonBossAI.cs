@@ -210,7 +210,8 @@ public class DragonBossAI : MonoBehaviour
         if (isDead) return;
 
         isDead = true;
-        animatorController.PlayDeath();
         StopAllCoroutines();
+
+        Destroy(gameObject, 2.5f);
     }
 }

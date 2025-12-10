@@ -22,7 +22,7 @@ public class CameraOffsetZone : MonoBehaviour
 
         if (camFollow == null)
         {
-            camFollow = FindObjectOfType<MetroidvaniaCamera2D>();
+            camFollow = FindFirstObjectByType<MetroidvaniaCamera2D>();
         }
 
         if (camFollow == null)

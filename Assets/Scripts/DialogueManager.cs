@@ -162,20 +162,22 @@ public class DialogueManager : MonoBehaviour
     /// <summary>
     /// Freezes or unfreezes player movement and attack.
     /// </summary>
-    private void FreezePlayer(bool frozen)
+   private void FreezePlayer(bool frozen)
     {
-        // Auto find if not wired in the Inspector
-        if (playerMovement == null)
-            playerMovement = FindObjectOfType<PlayerMovement>();
-        if (playerAttack == null)
-            playerAttack = FindObjectOfType<Attack>();
+        
+    if (playerMovement == null)
+        playerMovement = FindFirstObjectByType<PlayerMovement>();
 
-        if (playerMovement != null)
-            playerMovement.enabled = !frozen;
+    if (playerAttack == null)
+        playerAttack = FindFirstObjectByType<Attack>();
 
-        if (playerAttack != null)
-            playerAttack.enabled = !frozen;
+    if (playerMovement != null)
+        playerMovement.enabled = !frozen;
+
+    if (playerAttack != null)
+        playerAttack.canAttack = !frozen;   // ✔ Safe (does NOT disable script)
     }
+
 
     // =========================================================
     // AMBIENT ONE SHOT LINES (no freeze, auto hide)

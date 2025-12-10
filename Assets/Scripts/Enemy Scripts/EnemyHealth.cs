@@ -19,6 +19,7 @@ public class EnemyHealth : MonoBehaviour
     private bool isDead = false;
 
     public UnityEvent OnDied;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -36,12 +37,17 @@ public class EnemyHealth : MonoBehaviour
         currentHealth -= amount;
         Debug.Log($"[EnemyHealth] {name} took {amount} damage at {hitSourceWorldPos}. HP now {currentHealth}/{maxHealth}");
 
+        // Knockback + flash coroutine
         StartCoroutine(HitFeedbackCoroutine(hitSourceWorldPos));
 
+        // Check death
         if (currentHealth <= 0)
         {
-            OnDied.Invoke();
-            //Die();
+            // Optional UnityEvent
+            OnDied?.Invoke();
+
+            // Always run Die()
+            Die();
         }
     }
 
@@ -49,19 +55,19 @@ public class EnemyHealth : MonoBehaviour
     {
         Vector2 dir = ((Vector2)transform.position - hitSourceWorldPos).normalized;
 
-        // start knockback
+        // Start knockback
         rb.linearVelocity = Vector2.zero;
         rb.AddForce(dir * knockbackForce, ForceMode2D.Impulse);
 
-        // flash color
+        // Flash color
         sr.color = hitColor;
         yield return new WaitForSeconds(flashTime);
         sr.color = originalColor;
 
-        // finish knockback
+        // Finish knockback
         yield return new WaitForSeconds(knockbackTime - flashTime);
 
-        // stop sliding
+        // Stop sliding
         rb.linearVelocity = Vector2.zero;
     }
 
@@ -72,9 +78,19 @@ public class EnemyHealth : MonoBehaviour
 
         Debug.Log($"[EnemyHealth] {name} died");
 
+        // ⭐ HEAL PLAYER TO FULL WHEN ENEMY DIES ⭐
+        PlayerHealth player = FindFirstObjectByType<PlayerHealth>();
+        if (player != null)
+        {
+            player.HealToFull();
+            Debug.Log("Enemy killed -> Player healed to FULL HP!");
+        }
+
+        // Disable all colliders so no more hits register
         foreach (var col in GetComponents<Collider2D>())
             col.enabled = false;
 
+        // Play death animation later if needed
         Destroy(gameObject, 0.3f);
     }
 }
