@@ -1679,38 +1679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealthUI
   playerHealth: {fileID: 1730557373}
-  healthSlider: {fileID: 153661641}
-  fillImage: {fileID: 669534286}
-  healthGradient:
-    serializedVersion: 2
-    key0: {r: 1, g: 1, b: 1, a: 1}
-    key1: {r: 1, g: 1, b: 1, a: 1}
-    key2: {r: 0, g: 0, b: 0, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 65535
-    ctime2: 0
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_ColorSpace: -1
-    m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
+  microBar: {fileID: 0}
 --- !u!114 &153661641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2618,7 +2587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AmbientDialogueZone
   characterName: Hazardman
   portrait: {fileID: 0}
-  line: I think I see a keycard over there
+  line: I think I see a keycard over there.
   visibleTime: 3
   triggerOnce: 1
 --- !u!61 &255375857
@@ -3262,7 +3231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AmbientDialogueZone
   characterName: Hazardman
   portrait: {fileID: 0}
-  line: seems like theres mutated animals everywhere
+  line: Seems like theres mutated animals everywhere.
   visibleTime: 3
   triggerOnce: 1
 --- !u!61 &337182968
@@ -9451,7 +9420,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AmbientDialogueZone
   characterName: Hazardman
   portrait: {fileID: 0}
-  line: This place is surrounded with mutated animals
+  line: This place is surrounded with mutated animals.
   visibleTime: 3
   triggerOnce: 1
 --- !u!61 &939930288
@@ -10387,7 +10356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AmbientDialogueZone
   characterName: Hazardman
   portrait: {fileID: 0}
-  line: I have to be careful with that lava
+  line: I have to be careful with that lava.
   visibleTime: 3
   triggerOnce: 1
 --- !u!61 &1026468369
@@ -11715,7 +11684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AmbientDialogueZone
   characterName: Hazardman
   portrait: {fileID: 0}
-  line: I guess I have to go up
+  line: I guess I have to go up.
   visibleTime: 3
   triggerOnce: 1
 --- !u!61 &1092715005
@@ -12562,7 +12531,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AmbientDialogueZone
   characterName: Hazardman
   portrait: {fileID: 0}
-  line: i need to get out of here fast
+  line: I need to get out of here fast
   visibleTime: 4
   triggerOnce: 1
 --- !u!61 &1187319587
@@ -22048,6 +22017,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22e168f00fc4c734ca67b7aedc054884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  moveSpeed: 5
+  jumpForce: 9.5
+  jumpCutMultiplier: 0.65
+  fallGravityMultiplier: 1.6
+  lowJumpGravityMultiplier: 1.2
+  groundCheck: {fileID: 0}
+  groundCheckSize: {x: 0.8, y: 0.1}
+  groundLayer:
+    m_Bits: 0
+  originalMoveSpeed: 0
 --- !u!95 &1730557366
 Animator:
   serializedVersion: 7
@@ -26311,7 +26290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AmbientDialogueZone
   characterName: Hazardman
   portrait: {fileID: 0}
-  line: What the hell is that??
+  line: What the hell is that???
   visibleTime: 3
   triggerOnce: 1
 --- !u!61 &2067901751
@@ -26407,7 +26386,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AmbientDialogueZone
   characterName: Hazardman
   portrait: {fileID: 0}
-  line: ah shit...I probably need that keycard to open that gate
+  line: Ah shit...I probably need that keycard to open that gate.
   visibleTime: 4
   triggerOnce: 1
 --- !u!61 &2072075540
@@ -47007,6 +46986,7 @@ MonoBehaviour:
   stopDistance: 3
   attackRange: 3
   attackCooldown: 2
+  patrolRadius: 5
 --- !u!1001 &113115007378829298
 PrefabInstance:
   m_ObjectHideFlags: 0
