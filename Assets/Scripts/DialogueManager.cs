@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -14,6 +15,7 @@ public class DialogueCharacter
 public class DialogueLine
 {
     public DialogueCharacter character;
+
     [TextArea(3, 10)]
     public string line;
 }
@@ -26,7 +28,7 @@ public class Dialogue
 
 public class DialogueManager : MonoBehaviour
 {
-    // Singleton so DialogueTrigger can call DialogueManager.Instance
+    // Singleton so other scripts can call DialogueManager.Instance
     public static DialogueManager Instance { get; private set; }
 
     // Other scripts (intro cutscene, etc) can listen to this
@@ -40,11 +42,15 @@ public class DialogueManager : MonoBehaviour
 
     [Header("Player references")]
     [SerializeField] private PlayerMovement playerMovement;
-    [SerializeField] private Attack playerAttack;   // your attack script is called Attack
+    [SerializeField] private Attack playerAttack;   // your attack script
 
+    // Full dialogue state
     private Dialogue currentDialogue;
     private int index = 0;
     public bool IsDialogueOpen { get; private set; }
+
+    // Ambient one shot state
+    private Coroutine oneShotRoutine;
 
     private void Awake()
     {
@@ -62,6 +68,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
+        // Only advance when a real dialogue is open
         if (!IsDialogueOpen) return;
 
         // Left mouse to advance
@@ -71,12 +78,23 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    // =========================================================
+    // FULL DIALOGUE (cutscenes, conversations)
+    // =========================================================
+
     public void StartDialogue(Dialogue dialogue)
     {
         if (dialogue == null || dialogue.dialogueLines == null || dialogue.dialogueLines.Count == 0)
         {
             Debug.LogWarning("DialogueManager: Dialogue is null or has no lines.");
             return;
+        }
+
+        // Stop any ambient timer so it does not interfere
+        if (oneShotRoutine != null)
+        {
+            StopCoroutine(oneShotRoutine);
+            oneShotRoutine = null;
         }
 
         currentDialogue = dialogue;
@@ -146,7 +164,7 @@ public class DialogueManager : MonoBehaviour
     /// </summary>
     private void FreezePlayer(bool frozen)
     {
-        // Auto-find if not wired in the Inspector
+        // Auto find if not wired in the Inspector
         if (playerMovement == null)
             playerMovement = FindObjectOfType<PlayerMovement>();
         if (playerAttack == null)
@@ -157,5 +175,66 @@ public class DialogueManager : MonoBehaviour
 
         if (playerAttack != null)
             playerAttack.enabled = !frozen;
+    }
+
+    // =========================================================
+    // AMBIENT ONE SHOT LINES (no freeze, auto hide)
+    // =========================================================
+
+    /// <summary>
+    /// Show a single line that auto hides after duration.
+    /// Does nothing if a full dialogue is currently open.
+    /// </summary>
+    public void ShowAmbient(string name, Sprite portrait, string text, float duration)
+    {
+        // Do not interrupt real dialogue
+        if (IsDialogueOpen) return;
+
+        if (nameText != null)
+            nameText.text = string.IsNullOrEmpty(name) ? "" : name;
+
+        if (dialogueText != null)
+            dialogueText.text = text;
+
+        if (portraitImage != null)
+            portraitImage.sprite = portrait;
+
+        if (dialoguePanel != null)
+            dialoguePanel.SetActive(true);
+
+        if (oneShotRoutine != null)
+            StopCoroutine(oneShotRoutine);
+
+        oneShotRoutine = StartCoroutine(HideOneShotAfter(duration));
+    }
+
+
+    /// <summary>
+    /// Hide ambient text immediately, but will not close an active full dialogue.
+    /// </summary>
+    public void HideOneShotImmediate()
+    {
+        // If a full dialogue is open, do not touch it
+        if (IsDialogueOpen) return;
+
+        if (dialoguePanel != null)
+            dialoguePanel.SetActive(false);
+
+        if (oneShotRoutine != null)
+        {
+            StopCoroutine(oneShotRoutine);
+            oneShotRoutine = null;
+        }
+    }
+
+    private IEnumerator HideOneShotAfter(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+
+        // Only hide if a full dialogue did not start in between
+        if (!IsDialogueOpen && dialoguePanel != null)
+            dialoguePanel.SetActive(false);
+
+        oneShotRoutine = null;
     }
 }
