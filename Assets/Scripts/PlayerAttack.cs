@@ -1,39 +1,41 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Attack : MonoBehaviour   // or PlayerAttack, keep whatever you already have
+public class Attack : MonoBehaviour
 {
+    public bool canAttack = true;    // <<------ ADD THIS
+
     private Animator anim;
     private PlayerInput playerInput;
     private InputAction attackAction;
 
-    private int comboStep = 0;        // 0 = idle, 1 = attack1, 2 = attack2, 3 = attack3
-    private bool canClick = true;     // True only when player can trigger next attack
-    public float comboResetTime = 1f; // Reset combo if idle too long
+    private int comboStep = 0;
+    private bool canClick = true;
+    public float comboResetTime = 1f;
     private float comboTimer = 0f;
 
-    // ------------- NEW: Hitbox reference -------------
     [Header("Melee Hitbox")]
     [SerializeField] private GameObject meleeHitbox;
 
-   void Start()
+    void Start()
     {
-    anim = GetComponent<Animator>();
-    playerInput = GetComponent<PlayerInput>();
+        anim = GetComponent<Animator>();
+        playerInput = GetComponent<PlayerInput>();
 
-    if (playerInput != null)
-        attackAction = playerInput.actions["Attack"];
-    else
-    {
-        attackAction = new InputAction("Attack", InputActionType.Button, "<Mouse>/leftButton");
-        attackAction.Enable();
+        if (playerInput != null)
+            attackAction = playerInput.actions["Attack"];
+        else
+        {
+            attackAction = new InputAction("Attack", InputActionType.Button, "<Mouse>/leftButton");
+            attackAction.Enable();
+        }
     }
-    }
-
 
     void Update()
     {
-        // Reset combo if idle too long
+        if (!canAttack)                      // <<------ ADD THIS
+            return;
+
         if (comboStep > 0)
         {
             comboTimer += Time.deltaTime;
@@ -41,16 +43,16 @@ public class Attack : MonoBehaviour   // or PlayerAttack, keep whatever you alre
                 ResetCombo();
         }
 
-        // Handle attack input
         if (attackAction != null && attackAction.triggered && canClick)
         {
             TriggerNextAttack();
+            Debug.Log("CLICK!");
         }
     }
 
     void TriggerNextAttack()
     {
-        canClick = false;        // Prevent multiple triggers until animation allows
+        canClick = false;
         comboTimer = 0f;
 
         comboStep++;
@@ -60,7 +62,6 @@ public class Attack : MonoBehaviour   // or PlayerAttack, keep whatever you alre
         anim.SetTrigger("Attack");
     }
 
-    // Called at the END of each animation via Animation Event
     public void AllowNextClick()
     {
         canClick = true;
@@ -80,34 +81,25 @@ public class Attack : MonoBehaviour   // or PlayerAttack, keep whatever you alre
             attackAction.Disable();
     }
 
-    // ------------- NEW: functions for animation events -------------
-
-    // Called when the swing becomes "active"
     public void EnableHitbox()
     {
         if (meleeHitbox != null)
         {
             MeleeHitbox hitboxScript = meleeHitbox.GetComponent<MeleeHitbox>();
             if (hitboxScript != null)
-            {
-                                hitboxScript.EnableHitbox();
-
-            }
+                hitboxScript.EnableHitbox();
             else
                 Debug.LogError("MeleeHitbox script not found on meleeHitbox GameObject!");
         }
     }
 
-    // Called when the swing is finished
     public void DisableHitbox()
     {
         if (meleeHitbox != null)
         {
             MeleeHitbox hitboxScript = meleeHitbox.GetComponent<MeleeHitbox>();
             if (hitboxScript != null)
-            {
                 hitboxScript.DisableHitbox();
-            }
             else
                 Debug.LogError("MeleeHitbox script not found on meleeHitbox GameObject!");
         }

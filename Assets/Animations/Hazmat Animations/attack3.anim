@@ -99,7 +99,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.48333332
+  - time: 0.3
     functionName: AllowNextClick
     data: 
     objectReferenceParameter: {fileID: 0}
