@@ -6,11 +6,24 @@ public class PlayerAttackHitbox : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Dragon"))
+        Debug.Log("Hitbox touched: " + collision.name);
+
+        
+
+        // Mini Boss
+        MiniBossHealth miniBoss = collision.GetComponentInParent<MiniBossHealth>();
+        if (miniBoss != null)
         {
-            DragonBossHealth dragon = collision.GetComponent<DragonBossHealth>();
-            if (dragon != null)
-                dragon.TakeDamage(damage);
+            miniBoss.TakeDamage(damage);
+            return;
+        }
+
+        // Dragon boss
+        DragonBossHealth dragon = collision.GetComponentInParent<DragonBossHealth>();
+        if (dragon != null)
+        {
+            dragon.TakeDamage(damage);
+            return;
         }
     }
 }

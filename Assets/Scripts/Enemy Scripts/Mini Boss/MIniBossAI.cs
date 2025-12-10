@@ -1,85 +1,118 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
 public class MiniBossAI : MonoBehaviour
 {
-    [Header("Movement")]
+    [Header("Movement Settings")]
+    public float patrolDistance = 4f;
     public float moveSpeed = 2f;
-    public float hoverAmplitude = 0.15f;
-    public float hoverFrequency = 2f;
-    public float stopDistance = 3f;
+    public float hoverAmount = 0.2f;
+    public float hoverSpeed = 2f;
 
-    [Header("Attack")]
-    public float attackRange = 3f;
+    [Header("Player Detection")]
+    public float aggroRange = 6f;   // Boss chases player inside this radius
+
+    [Header("Attack Settings")]
+    public float attackRange = 2.5f;
     public float attackCooldown = 2f;
 
-    private Animator anim;
-    private Transform player;
+    private float leftBound;
+    private float rightBound;
+    private bool movingRight = true;
+    private float baseY;
+
     private float lastAttackTime;
+    private Transform player;
+    private Animator animator;
 
-    [Header("Patrol Limit")]
-    public float patrolRadius = 5f;
-    private Vector3 homePosition;
-
-
-    private void Start()
+    void Start()
     {
+        animator = GetComponent<Animator>();
+        player = GameObject.FindGameObjectWithTag("Player")?.transform;
 
-        homePosition = transform.position;
+        baseY = transform.position.y;
 
-        anim = GetComponent<Animator>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        leftBound = transform.position.x - patrolDistance;
+        rightBound = transform.position.x + patrolDistance;
     }
 
-    private void Update()
+    void Update()
     {
-        if (player == null) return;
+        HoverMovement();
 
-        float dist = Vector2.Distance(transform.position, player.position);
+        if (player == null)
+        {
+            Patrol();
+            return;
+        }
 
-        // Attack logic
-        if (dist <= attackRange && Time.time >= lastAttackTime + attackCooldown)
+        float distance = Vector2.Distance(transform.position, player.position);
+
+        if (distance <= aggroRange)
+            ChasePlayer();
+        else
+            Patrol();
+
+        TryAttack(distance);
+    }
+
+    // --------------------------------------
+
+    private void HoverMovement()
+    {
+        float newY = baseY + Mathf.Sin(Time.time * hoverSpeed) * hoverAmount;
+        transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+    }
+
+    private void Patrol()
+    {
+        float x = transform.position.x;
+
+        if (movingRight)
+        {
+            x += moveSpeed * Time.deltaTime;
+            if (x >= rightBound) movingRight = false;
+        }
+        else
+        {
+            x -= moveSpeed * Time.deltaTime;
+            if (x <= leftBound) movingRight = true;
+        }
+
+        // Clamp so patrol never escapes
+        x = Mathf.Clamp(x, leftBound, rightBound);
+
+        transform.position = new Vector3(x, transform.position.y, transform.position.z);
+
+        transform.localScale = new Vector3(movingRight ? 1 : -1, 1, 1);
+    }
+
+    // --------------------------------------
+
+    private void ChasePlayer()
+    {
+        float targetX = player.position.x;
+        float currentX = transform.position.x;
+
+        float direction = Mathf.Sign(targetX - currentX);
+        float newX = currentX + direction * moveSpeed * Time.deltaTime;
+
+        // Clamp inside patrol zone so boss stays on map
+        newX = Mathf.Clamp(newX, leftBound, rightBound);
+
+        transform.position = new Vector3(newX, transform.position.y, transform.position.z);
+
+        transform.localScale = new Vector3(direction > 0 ? 1 : -1, 1, 1);
+    }
+
+    // --------------------------------------
+
+    private void TryAttack(float distance)
+    {
+        if (distance <= attackRange && Time.time >= lastAttackTime + attackCooldown)
         {
             lastAttackTime = Time.time;
-            anim.SetTrigger("Attack");
-            return; // stop movement during attack
+            if (animator != null)
+                animator.SetTrigger("Attack");
         }
-
-        // Fly movement when not attacking
-        if (dist > stopDistance)
-            FlyTowardsPlayer();
-        else
-            HoverInPlace();
-    }
-
-    void FlyTowardsPlayer()
-    {
-        Vector2 dir = (player.position - transform.position).normalized;
-
-        // Move only if within patrol area
-        if (Vector2.Distance(transform.position, homePosition) < patrolRadius)
-        {
-            transform.position += (Vector3)dir * moveSpeed * Time.deltaTime;
-        }
-
-        HoverInPlace();
-        Flip(dir.x);
-    }
-
-
-    void HoverInPlace()
-    {
-        float hover = Mathf.Sin(Time.time * hoverFrequency) * hoverAmplitude;
-        transform.position = new Vector3(transform.position.x,
-                                         transform.position.y + hover * Time.deltaTime,
-                                         transform.position.z);
-    }
-
-    void Flip(float dirX)
-    {
-        if (dirX < 0)
-            transform.localScale = new Vector3(-1, 1, 1);
-        else if (dirX > 0)
-            transform.localScale = new Vector3(1, 1, 1);
     }
 }

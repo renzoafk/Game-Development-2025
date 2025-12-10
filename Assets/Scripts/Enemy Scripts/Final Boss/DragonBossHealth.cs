@@ -3,7 +3,7 @@ using System.Collections;
 
 public class DragonBossHealth : MonoBehaviour
 {
-    public int maxHealth = 200;
+    public int maxHealth = 20;
     private int currentHealth;
 
     private SpriteRenderer[] sprites;  // <-- All body parts!

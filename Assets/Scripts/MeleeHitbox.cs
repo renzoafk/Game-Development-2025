@@ -38,7 +38,7 @@ public class MeleeHitbox : MonoBehaviour
 
         // Handle NORMAL enemies
         EnemyHealth enemy = other.GetComponentInParent<EnemyHealth>();
-
+        MiniBossHealth miniBoss = other.GetComponentInParent<MiniBossHealth>();
         // Handle BOSS dragon
         DragonBossHealth boss = other.GetComponentInParent<DragonBossHealth>();
         if (boss != null)
@@ -65,6 +65,13 @@ public class MeleeHitbox : MonoBehaviour
         {
             boss.TakeDamage(damage);
             Debug.Log("[MeleeHitbox] Hit BOSS: " + other.name);
+            return;
+        }
+
+           if (miniBoss != null)
+        {
+            miniBoss.TakeDamage(damage);
+            Debug.Log("[MeleeHitbox] Hit MINIBOSS: " + other.name);
             return;
         }
     }
