@@ -29,7 +29,7 @@ public class StarfishEnemyAI : MonoBehaviour
         if (dist <= attackRange && Time.time >= lastAttackTime + attackCooldown)
         {
             lastAttackTime = Time.time;
-            anim.SetTrigger(attackTrigger);
+            anim.SetTrigger("Attack");
         }
     }
 }

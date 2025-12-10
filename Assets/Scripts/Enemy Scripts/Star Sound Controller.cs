@@ -19,13 +19,13 @@ public class Starfish : MonoBehaviour
         starSource.clip = clip;
         starSource.Play();
         //Debug.Log(clip.name);
+    }
 
-        void StarDeathSound()
-        {
-            AudioClip clip = DeathSounds[Random.Range(0, StarSounds.Length)];
-            starSource.clip = clip;
-            starSource.Play();
-            //Debug.Log(clip.name);
-        }
+    void StarDeathSound()
+    {
+        AudioClip clip = DeathSounds[Random.Range(0, StarSounds.Length)];
+        starSource.clip = clip;
+        starSource.Play();
+        //Debug.Log(clip.name);
     }
 }

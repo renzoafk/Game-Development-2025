@@ -2,15 +2,38 @@ using UnityEngine;
 
 public class DragonBossCombat : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [Header("Hitboxes")]
+    public GameObject attackHitbox;
+    public GameObject specialHitbox;
+
+    private void Start()
     {
-        
+        if (attackHitbox != null) attackHitbox.SetActive(false);
+        if (specialHitbox != null) specialHitbox.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    // Called From Animation Events
+    public void EnableAttackHitbox()
     {
-        
+        if (attackHitbox != null)
+            attackHitbox.SetActive(true);
+    }
+
+    public void DisableAttackHitbox()
+    {
+        if (attackHitbox != null)
+            attackHitbox.SetActive(false);
+    }
+
+    public void EnableSpecialHitbox()
+    {
+        if (specialHitbox != null)
+            specialHitbox.SetActive(true);
+    }
+
+    public void DisableSpecialHitbox()
+    {
+        if (specialHitbox != null)
+            specialHitbox.SetActive(false);
     }
 }

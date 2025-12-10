@@ -9176,9 +9176,11 @@ GameObject:
   - component: {fileID: 1070091562}
   - component: {fileID: 1070091564}
   - component: {fileID: 1070091563}
-  m_Layer: 0
-  m_Name: Idle_0
-  m_TagString: Untagged
+  - component: {fileID: 1070091565}
+  - component: {fileID: 1070091566}
+  m_Layer: 7
+  m_Name: Dragon
+  m_TagString: Dragon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9192,8 +9194,8 @@ Transform:
   m_GameObject: {fileID: 1070091552}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.98058546, z: -0, w: 0.19609207}
-  m_LocalPosition: {x: -3.1699982, y: -7.9400024, z: 0}
-  m_LocalScale: {x: 3.7448843, y: 3.2587156, z: 1}
+  m_LocalPosition: {x: -7.6, y: -7.8552, z: 0}
+  m_LocalScale: {x: 3.7448843, y: 3.138143, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1587821413}
@@ -9331,6 +9333,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5824fdf096a6c8747bad300d28b318d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DragonBossCombat
+  attackHitbox: {fileID: 0}
+  specialHitbox: {fileID: 0}
 --- !u!50 &1070091562
 Rigidbody2D:
   serializedVersion: 5
@@ -9393,6 +9397,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5275dbc2e8b1ee94aa3b961410b51a69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DragonAnimatorController
+--- !u!70 &1070091565
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070091552}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.2557873, y: -0.08027023}
+  m_Size: {x: 1.9073516, y: 2.1446543}
+  m_Direction: 0
+--- !u!114 &1070091566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070091552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95af9dbb5a21e21419509533398a1337, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DragonBossHealth
+  maxHealth: 30
 --- !u!1 &1086027972
 GameObject:
   m_ObjectHideFlags: 0
@@ -17292,7 +17346,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1587821413}
   - component: {fileID: 1587821414}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DragonAttackHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17348,7 +17402,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.02203238, y: -0.23632252}
+  m_Offset: {x: -1.3518918, y: -0.31494567}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -17358,7 +17412,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.5423234, y: 0.9324782}
+  m_Size: {x: 1.6501684, y: 0.34281594}
   m_EdgeRadius: 0
 --- !u!1 &1600339592
 GameObject:
@@ -17493,7 +17547,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1607251761}
   - component: {fileID: 1607251762}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DragonSpecialHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17549,7 +17603,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -1.320785, y: 0.44224942}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -17559,7 +17613,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.3569622, y: 1.8844984}
   m_EdgeRadius: 0
 --- !u!1 &1611257870
 GameObject:
@@ -22924,8 +22978,8 @@ Transform:
   m_GameObject: {fileID: 587530705}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 22.18, y: 2.92, z: 0}
-  m_LocalScale: {x: 4.5188203, y: 4.5188203, z: 4.5188203}
+  m_LocalPosition: {x: 24.97, y: 8.09, z: 0}
+  m_LocalScale: {x: 4.169967, y: 4.5188203, z: 4.5188203}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 825652669}
@@ -23070,9 +23124,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2054064901}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Final Boss
-  m_TagString: Untagged
+  m_TagString: Dragon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42553,11 +42607,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1796132367733814031, guid: 2ec1d1479991ea44b9e21e4d0568b69c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 7.9891553
+      value: 5.689876
       objectReference: {fileID: 0}
     - target: {fileID: 1796132367733814031, guid: 2ec1d1479991ea44b9e21e4d0568b69c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 7.577362
+      value: 5.1230545
       objectReference: {fileID: 0}
     - target: {fileID: 1796132367733814031, guid: 2ec1d1479991ea44b9e21e4d0568b69c, type: 3}
       propertyPath: m_LocalScale.z
@@ -42565,31 +42619,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1796132367733814031, guid: 2ec1d1479991ea44b9e21e4d0568b69c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.0862
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1796132367733814031, guid: 2ec1d1479991ea44b9e21e4d0568b69c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -91.3227
+      value: -92.3
       objectReference: {fileID: 0}
     - target: {fileID: 1796132367733814031, guid: 2ec1d1479991ea44b9e21e4d0568b69c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.0000007249352
       objectReference: {fileID: 0}
     - target: {fileID: 1796132367733814031, guid: 2ec1d1479991ea44b9e21e4d0568b69c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.0143959075
       objectReference: {fileID: 0}
     - target: {fileID: 1796132367733814031, guid: 2ec1d1479991ea44b9e21e4d0568b69c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1796132367733814031, guid: 2ec1d1479991ea44b9e21e4d0568b69c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.9998964
       objectReference: {fileID: 0}
     - target: {fileID: 1796132367733814031, guid: 2ec1d1479991ea44b9e21e4d0568b69c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1796132367733814031, guid: 2ec1d1479991ea44b9e21e4d0568b69c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -42597,7 +42651,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1796132367733814031, guid: 2ec1d1479991ea44b9e21e4d0568b69c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 178.35
       objectReference: {fileID: 0}
     - target: {fileID: 1796132367733814031, guid: 2ec1d1479991ea44b9e21e4d0568b69c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -42723,11 +42777,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6934387942277505423, guid: b734b2da681acad429080e4cf07a1608, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 62.2808
+      value: 64.66
       objectReference: {fileID: 0}
     - target: {fileID: 6934387942277505423, guid: b734b2da681acad429080e4cf07a1608, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -53.994
+      value: -54.56
       objectReference: {fileID: 0}
     - target: {fileID: 6934387942277505423, guid: b734b2da681acad429080e4cf07a1608, type: 3}
       propertyPath: m_LocalPosition.z
@@ -42987,7 +43041,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9110229446346343552, guid: 4fd0c2456032d37468db5a4303d9ca41, type: 3}
       propertyPath: m_LocalScale.x
-      value: 4.5188203
+      value: 4.169967
       objectReference: {fileID: 0}
     - target: {fileID: 9110229446346343552, guid: 4fd0c2456032d37468db5a4303d9ca41, type: 3}
       propertyPath: m_LocalScale.y
@@ -42999,11 +43053,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9110229446346343552, guid: 4fd0c2456032d37468db5a4303d9ca41, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 22.18
+      value: 24.97
       objectReference: {fileID: 0}
     - target: {fileID: 9110229446346343552, guid: 4fd0c2456032d37468db5a4303d9ca41, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.92
+      value: 8.09
       objectReference: {fileID: 0}
     - target: {fileID: 9110229446346343552, guid: 4fd0c2456032d37468db5a4303d9ca41, type: 3}
       propertyPath: m_LocalPosition.z
@@ -43055,19 +43109,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1674306721608990968, guid: 7c9ccf54d9e4aaa4fb2901f2a50276db, type: 3}
       propertyPath: m_LocalScale.x
-      value: 6.7124467
+      value: 6.3197684
       objectReference: {fileID: 0}
     - target: {fileID: 1674306721608990968, guid: 7c9ccf54d9e4aaa4fb2901f2a50276db, type: 3}
       propertyPath: m_LocalScale.y
-      value: 6.4014893
+      value: 4.438153
       objectReference: {fileID: 0}
     - target: {fileID: 1674306721608990968, guid: 7c9ccf54d9e4aaa4fb2901f2a50276db, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 28.14
+      value: 28.2382
       objectReference: {fileID: 0}
     - target: {fileID: 1674306721608990968, guid: 7c9ccf54d9e4aaa4fb2901f2a50276db, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -65.43
+      value: -65.9208
       objectReference: {fileID: 0}
     - target: {fileID: 1674306721608990968, guid: 7c9ccf54d9e4aaa4fb2901f2a50276db, type: 3}
       propertyPath: m_LocalPosition.z
