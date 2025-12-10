@@ -11,7 +11,7 @@ public class PlayerHealthUI : MonoBehaviour
     {
         // Auto-grab references if not set in Inspector
         if (playerHealth == null)
-            playerHealth = FindFirstObjectByType<PlayerHealth>();
+            playerHealth = FindObjectOfType<PlayerHealth>();
 
         if (microBar == null)
             microBar = GetComponent<MicroBar>();
