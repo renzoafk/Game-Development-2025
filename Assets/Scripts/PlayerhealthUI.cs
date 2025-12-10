@@ -1,50 +1,58 @@
 using Microlight.MicroBar;
 using UnityEngine;
 
-// Simple standalone driver for a MicroBar (not required if you're using PlayerHealthUI)
-public class MicrobarHealth : MonoBehaviour
+public class PlayerHealthUI : MonoBehaviour
 {
     [Header("References")]
+    [SerializeField] private PlayerHealth playerHealth;
     [SerializeField] private MicroBar microBar;
-
-    [Header("Health Settings")]
-    [SerializeField] private int maxHealth = 5;
-    [SerializeField] private int currentHealth = 5;
 
     private void Awake()
     {
+        // Auto-grab references if not set in Inspector
+        if (playerHealth == null)
+            playerHealth = FindObjectOfType<PlayerHealth>();
+
         if (microBar == null)
             microBar = GetComponent<MicroBar>();
 
-        if (microBar == null)
+        // Safety check
+        if (playerHealth == null || microBar == null)
         {
-            Debug.LogWarning("MicrobarHealth: Missing MicroBar reference.", this);
+            Debug.LogWarning("PlayerHealthUI is missing references.", this);
             enabled = false;
             return;
         }
 
-        // Initialize bar and set starting value (no animation)
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-        microBar.Initialize(maxHealth);
-        microBar.UpdateBar(currentHealth, true); // skipAnimation = true
+        // Initialize MicroBar with the player's max health
+        microBar.Initialize(playerHealth.MaxHealth);
+
+        // Set starting value WITHOUT animation
+        microBar.UpdateBar(playerHealth.CurrentHealth, true); // skipAnimation = true
     }
 
-    // Public helpers if you ever want to drive this script directly
-    public void Damage(int amount)
+    private void OnEnable()
     {
-        SetHealth(currentHealth - amount);
+        if (playerHealth != null)
+            playerHealth.OnHealthChanged += HandleHealthChanged;
     }
 
-    public void Heal(int amount)
+    private void OnDisable()
     {
-        SetHealth(currentHealth + amount);
+        if (playerHealth != null)
+            playerHealth.OnHealthChanged -= HandleHealthChanged;
     }
 
-    public void SetHealth(int value)
+    // This is called whenever PlayerHealth changes (current, max)
+    private void HandleHealthChanged(int current, int max)
     {
-        if (microBar == null) return;
+        if (microBar == null)
+            return;
 
-        currentHealth = Mathf.Clamp(value, 0, maxHealth);
-        microBar.UpdateBar(currentHealth); // uses asset's default animation logic
+        // Keep MicroBar's max HP in sync
+        microBar.SetNewMaxHP(max);
+
+        // Animate bar to new HP (uses default damage animation from the asset)
+        microBar.UpdateBar(current);
     }
 }
