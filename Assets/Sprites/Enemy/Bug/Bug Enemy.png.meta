@@ -1,0 +1,481 @@
+fileFormatVersion: 2
+guid: 1c6fd46d6c036b44fa0a6918838b5044
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -599444091780840538
+    second: Bug Enemy_0
+  - first:
+      213: -254654408493685415
+    second: Bug Enemy_1
+  - first:
+      213: -2314127539764852785
+    second: Bug Enemy_2
+  - first:
+      213: -2250426749875950899
+    second: Bug Enemy_3
+  - first:
+      213: -661255730606292386
+    second: Bug Enemy_4
+  - first:
+      213: -7659147466200129024
+    second: Bug Enemy_5
+  - first:
+      213: 623578582124979297
+    second: Bug Enemy_6
+  - first:
+      213: 1246381779842105783
+    second: Bug Enemy_7
+  - first:
+      213: -2507176549862738652
+    second: Bug Enemy_8
+  - first:
+      213: -4523571798832325322
+    second: Bug Enemy_9
+  - first:
+      213: 9163557644443572039
+    second: Bug Enemy_10
+  - first:
+      213: -5561341043711317349
+    second: Bug Enemy_11
+  - first:
+      213: 8057994641869503679
+    second: Bug Enemy_12
+  - first:
+      213: -3971728239628049300
+    second: Bug Enemy_13
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Bug Enemy_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 402
+        width: 126
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a342b646c85ea7f0800000000000000
+      internalID: -599444091780840538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bug Enemy_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 402
+        width: 127
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9552f392a29477cf0800000000000000
+      internalID: -254654408493685415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bug Enemy_2
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 402
+        width: 123
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc70e5b634192efd0800000000000000
+      internalID: -2314127539764852785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bug Enemy_3
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 402
+        width: 122
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dca6b945bc0e4c0e0800000000000000
+      internalID: -2250426749875950899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bug Enemy_4
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 276
+        width: 121
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e52458f9a6fb2d6f0800000000000000
+      internalID: -661255730606292386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bug Enemy_5
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 279
+        width: 121
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 002eeca95fd35b590800000000000000
+      internalID: -7659147466200129024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bug Enemy_6
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 279
+        width: 95
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 164e915aa6567a800800000000000000
+      internalID: 623578582124979297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bug Enemy_7
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 271
+        width: 95
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b1020a00a90c4110800000000000000
+      internalID: 1246381779842105783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bug Enemy_8
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 143
+        width: 95
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 425fd342638b43dd0800000000000000
+      internalID: -2507176549862738652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bug Enemy_9
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 139
+        width: 100
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63ddf967a6b0931c0800000000000000
+      internalID: -4523571798832325322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bug Enemy_10
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 141
+        width: 99
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 747dfd3802f7b2f70800000000000000
+      internalID: 9163557644443572039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bug Enemy_11
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 152
+        width: 94
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9a69c639c522d2b0800000000000000
+      internalID: -5561341043711317349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bug Enemy_12
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 23
+        width: 94
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbcf1a60f6fb3df60800000000000000
+      internalID: 8057994641869503679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bug Enemy_13
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 20
+        width: 93
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c64259c853691e8c0800000000000000
+      internalID: -3971728239628049300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Bug Enemy_0: -599444091780840538
+      Bug Enemy_1: -254654408493685415
+      Bug Enemy_10: 9163557644443572039
+      Bug Enemy_11: -5561341043711317349
+      Bug Enemy_12: 8057994641869503679
+      Bug Enemy_13: -3971728239628049300
+      Bug Enemy_2: -2314127539764852785
+      Bug Enemy_3: -2250426749875950899
+      Bug Enemy_4: -661255730606292386
+      Bug Enemy_5: -7659147466200129024
+      Bug Enemy_6: 623578582124979297
+      Bug Enemy_7: 1246381779842105783
+      Bug Enemy_8: -2507176549862738652
+      Bug Enemy_9: -4523571798832325322
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

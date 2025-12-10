@@ -1,0 +1,665 @@
+fileFormatVersion: 2
+guid: f47a5260bf38dc149bf7261c4e56f8d3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5515772023248041263
+    second: Bug Attack_0
+  - first:
+      213: 2982294740191628315
+    second: Bug Attack_1
+  - first:
+      213: 7514307947900569194
+    second: Bug Attack_2
+  - first:
+      213: 1534046938027357342
+    second: Bug Attack_3
+  - first:
+      213: -6385598446889562003
+    second: Bug Attack_4
+  - first:
+      213: -262881727683480349
+    second: Bug Attack_5
+  - first:
+      213: 6708429620999610275
+    second: Bug Attack_6
+  - first:
+      213: 9114805458354402107
+    second: Bug Attack_7
+  - first:
+      213: 1498222832550237130
+    second: Bug Attack_8
+  - first:
+      213: 5451013614348293503
+    second: Bug Attack_9
+  - first:
+      213: 3425086676093344396
+    second: Bug Attack_10
+  - first:
+      213: -5911281729415518300
+    second: Bug Attack_11
+  - first:
+      213: -1712542612595256723
+    second: Bug Attack_12
+  - first:
+      213: 3687007827658382142
+    second: Bug Attack_13
+  - first:
+      213: 5118730454057248647
+    second: Bug Attack_14
+  - first:
+      213: -7914376783098464675
+    second: Bug Attack_15
+  - first:
+      213: 5564001032794220567
+    second: Bug Attack_16
+  - first:
+      213: -4436496354947129122
+    second: Bug Attack_17
+  - first:
+      213: 5850028823750510709
+    second: Bug Attack_18
+  - first:
+      213: 6821933780508863546
+    second: Bug Attack_19
+  - first:
+      213: -3670826084365844784
+    second: Bug Attack_20
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Bug Attack_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 403
+        width: 125
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f25bcbb6e65fb8c40800000000000000
+      internalID: 5515772023248041263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bug Attack_1
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 403
+        width: 125
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1c43ace34d336920800000000000000
+      internalID: 2982294740191628315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bug Attack_2
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 403
+        width: 121
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a66028f144f284860800000000000000
+      internalID: 7514307947900569194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bug Attack_3
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 403
+        width: 121
+        height: 109
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9475e9ff870a4510800000000000000
+      internalID: 1534046938027357342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bug Attack_4
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 277
+        width: 119
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d609cde7b0cc167a0800000000000000
+      internalID: -6385598446889562003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bug Attack_5
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 280
+        width: 119
+        height: 98
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e43c73267e0a5cf0800000000000000
+      internalID: -262881727683480349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bug Attack_6
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 280
+        width: 102
+        height: 88
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3afd3609231291d50800000000000000
+      internalID: 6708429620999610275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bug Attack_7
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 272
+        width: 109
+        height: 98
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b337106a54b4e7e70800000000000000
+      internalID: 9114805458354402107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bug Attack_8
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 144
+        width: 116
+        height: 99
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac359807ab1cac410800000000000000
+      internalID: 1498222832550237130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bug Attack_9
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 135
+        width: 120
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f755c056004e5ab40800000000000000
+      internalID: 5451013614348293503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bug Attack_10
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 24
+        width: 11
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8a977d5f2a588f20800000000000000
+      internalID: 3425086676093344396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bug Attack_11
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 123
+        width: 117
+        height: 117
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a76eee1698e6fda0800000000000000
+      internalID: -5911281729415518300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bug Attack_12
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 24
+        width: 9
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d625a893193db38e0800000000000000
+      internalID: -1712542612595256723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bug Attack_13
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 123
+        width: 114
+        height: 115
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3b99aba512ea2330800000000000000
+      internalID: 3687007827658382142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bug Attack_14
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 56
+        width: 8
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7876e0f4a32690740800000000000000
+      internalID: 5118730454057248647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bug Attack_15
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 69
+        width: 13
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5631d87f3c7a2290800000000000000
+      internalID: -7914376783098464675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bug Attack_16
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 43
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7182b91c57d473d40800000000000000
+      internalID: 5564001032794220567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bug Attack_17
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 73
+        width: 32
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed0af0c12166e62c0800000000000000
+      internalID: -4436496354947129122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bug Attack_18
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 37
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 578027d683a7f2150800000000000000
+      internalID: 5850028823750510709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bug Attack_19
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 24
+        width: 92
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3ce77411a06cae50800000000000000
+      internalID: 6821933780508863546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bug Attack_20
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 21
+        width: 91
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0deb229002b9e0dc0800000000000000
+      internalID: -3670826084365844784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 7a1f5984a7963a142a16232a3563f754
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Bug Attack_0: 5515772023248041263
+      Bug Attack_1: 2982294740191628315
+      Bug Attack_10: 3425086676093344396
+      Bug Attack_11: -5911281729415518300
+      Bug Attack_12: -1712542612595256723
+      Bug Attack_13: 3687007827658382142
+      Bug Attack_14: 5118730454057248647
+      Bug Attack_15: -7914376783098464675
+      Bug Attack_16: 5564001032794220567
+      Bug Attack_17: -4436496354947129122
+      Bug Attack_18: 5850028823750510709
+      Bug Attack_19: 6821933780508863546
+      Bug Attack_2: 7514307947900569194
+      Bug Attack_20: -3670826084365844784
+      Bug Attack_3: 1534046938027357342
+      Bug Attack_4: -6385598446889562003
+      Bug Attack_5: -262881727683480349
+      Bug Attack_6: 6708429620999610275
+      Bug Attack_7: 9114805458354402107
+      Bug Attack_8: 1498222832550237130
+      Bug Attack_9: 5451013614348293503
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

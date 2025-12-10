@@ -1,87 +1,91 @@
 using UnityEngine;
-using System;   // for Action
+using System;
+using Unity.VisualScripting;
+using System.Collections; // Keep this namespace
 
 public class PlayerHealth : MonoBehaviour
 {
-    [Header("Health")]
     [SerializeField] private int maxHealth = 5;
-    [SerializeField] private float invincibilityTime = 0.3f;
-
     private int currentHealth;
-    private bool isDead = false;
-    private bool isInvincible = false;
-    private float invincibleUntil;
+    private Animator animator;
+    
+    private SpriteRenderer spriteRenderer;
 
+    // Events (add these)
+    public event Action<int, int> OnHealthChanged; // (current, max)
+    public event Action<int> OnDamageTaken;
+    public event Action OnDeath;
+
+    // Public properties (add these)
     public int CurrentHealth => currentHealth;
     public int MaxHealth => maxHealth;
-
-    // UI / other systems can subscribe to this
-    public event Action<int, int> OnHealthChanged;
-    public event Action OnDeath;
 
     private void Awake()
     {
         currentHealth = maxHealth;
+        
+        // Initialize UI with current health
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
-    }
-
-    private void Update()
-    {
-        if (isInvincible && Time.time >= invincibleUntil)
-            isInvincible = false;
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public void TakeDamage(int amount)
     {
-        if (isDead) return;
-        if (isInvincible) return;
-
         currentHealth -= amount;
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        Debug.Log("Player took damage, current HP: " + currentHealth);
 
-        Debug.Log($"[PlayerHealth] Took {amount} damage. Current = {currentHealth}");
-
+        animator?.SetTrigger("Hurt");
+        StartCoroutine(FlashRed());
+        // Notify about damage
+        OnDamageTaken?.Invoke(amount);
+        
+        // Notify about health change
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
 
         if (currentHealth <= 0)
+        {
             Die();
-        else
-            MakeTemporarilyInvincible();
-    }
-
-    public void Heal(int amount)
-    {
-        if (isDead) return;
-
-        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-        Debug.Log($"[PlayerHealth] Healed {amount}. Current = {currentHealth}");
-
-        OnHealthChanged?.Invoke(currentHealth, maxHealth);
-    }
-
-    private void MakeTemporarilyInvincible()
-    {
-        isInvincible = true;
-        invincibleUntil = Time.time + invincibilityTime;
+        }
     }
 
     private void Die()
     {
-        if (isDead) return;
-        isDead = true;
-
-        Debug.Log("[PlayerHealth] Player died!");
-
-        // Optional: trigger death animation
-        Animator anim = GetComponent<Animator>();
-        if (anim != null)
-            anim.SetTrigger("die");
-
+        Debug.Log("Player died!");
+        
+        // Trigger death event
         OnDeath?.Invoke();
+        
+        // TODO restart scene or trigger death animation
+    }
+    
+    // Optional: Healing method (update to trigger event)
+    public void Heal(int amount)
+    {
+        currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
+        Debug.Log("Player healed, current HP: " + currentHealth);
+        
+        // Notify about health change
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+    }
+    
+    // Optional: Set health directly
+    public void SetHealth(int newHealth)
+    {
+        currentHealth = Mathf.Clamp(newHealth, 0, maxHealth);
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+        
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
 
-        if (DeathManager.Instance != null)
-            DeathManager.Instance.ShowDeathScreen();
-        else
-            Time.timeScale = 0f;
+    private IEnumerator FlashRed()
+    {
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        spriteRenderer.color = Color.white;
+        
     }
 }
