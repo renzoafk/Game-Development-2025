@@ -231,7 +231,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 255
+        width: 256
         height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -251,9 +251,9 @@ TextureImporter:
       name: Special_1
       rect:
         serializedVersion: 2
-        x: 255
+        x: 256
         y: 0
-        width: 255
+        width: 256
         height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -273,9 +273,9 @@ TextureImporter:
       name: Special_2
       rect:
         serializedVersion: 2
-        x: 510
+        x: 512
         y: 0
-        width: 255
+        width: 256
         height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -295,9 +295,9 @@ TextureImporter:
       name: Special_3
       rect:
         serializedVersion: 2
-        x: 765
+        x: 768
         y: 0
-        width: 255
+        width: 256
         height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -317,9 +317,9 @@ TextureImporter:
       name: Special_4
       rect:
         serializedVersion: 2
-        x: 1020
+        x: 1024
         y: 0
-        width: 255
+        width: 256
         height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -339,9 +339,9 @@ TextureImporter:
       name: Special_5
       rect:
         serializedVersion: 2
-        x: 1275
+        x: 1280
         y: 0
-        width: 255
+        width: 256
         height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -361,9 +361,9 @@ TextureImporter:
       name: Special_6
       rect:
         serializedVersion: 2
-        x: 1530
+        x: 1536
         y: 0
-        width: 255
+        width: 256
         height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -383,9 +383,9 @@ TextureImporter:
       name: Special_7
       rect:
         serializedVersion: 2
-        x: 1785
+        x: 1792
         y: 0
-        width: 255
+        width: 256
         height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -405,9 +405,9 @@ TextureImporter:
       name: Special_8
       rect:
         serializedVersion: 2
-        x: 2040
+        x: 2048
         y: 0
-        width: 255
+        width: 256
         height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -427,9 +427,9 @@ TextureImporter:
       name: Special_9
       rect:
         serializedVersion: 2
-        x: 2295
+        x: 2304
         y: 0
-        width: 255
+        width: 256
         height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -449,9 +449,9 @@ TextureImporter:
       name: Special_10
       rect:
         serializedVersion: 2
-        x: 2550
+        x: 2560
         y: 0
-        width: 255
+        width: 256
         height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -471,9 +471,9 @@ TextureImporter:
       name: Special_11
       rect:
         serializedVersion: 2
-        x: 2805
+        x: 2816
         y: 0
-        width: 255
+        width: 256
         height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -493,9 +493,9 @@ TextureImporter:
       name: Special_12
       rect:
         serializedVersion: 2
-        x: 3060
+        x: 3072
         y: 0
-        width: 255
+        width: 256
         height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -525,7 +525,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":255.0,"y":256.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":256.0,"y":256.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Special_0: -9068871714124230211
       Special_1: -5513262646514174557

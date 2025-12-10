@@ -15,13 +15,17 @@ public class PlayerSounds : MonoBehaviour
     [Header("Landing")]
     public List<AudioClip> Landing;
 
+    [Header("Parry")]
+    public List<AudioClip> Parry;
 
-    private AudioSource weaponSource, footstepSource, landingSource;
+
+    private AudioSource weaponSource, footstepSource, landingSource, parrySource;
     void Start()
     {
         weaponSource = GetComponent<AudioSource>();
         footstepSource = GetComponent<AudioSource>();
         landingSource = GetComponent<AudioSource>();
+        parrySource = GetComponent<AudioSource>();
     }
 
     void PlayCrowbarSwing()
@@ -55,5 +59,13 @@ public class PlayerSounds : MonoBehaviour
         landingSource.Play();
         //Debug.Log(clip.name);
 
+    }
+
+    void PlayParry()
+    {
+        AudioClip clip = Parry[Random.Range(0, Parry.Count)];
+        parrySource.clip = clip;
+        parrySource.Play();
+        //Debug.Log(clip.name);
     }
 }
