@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Attack
+  m_Name: Landing
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,15 +21,15 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -8915327726919978405, guid: e8cfd9c9ac1d40b4ba95dface21b5060, type: 3}
+      value: {fileID: 5882834985922949356, guid: 5d9257893ced7b041b23c7798fa17628, type: 3}
     - time: 0.15
-      value: {fileID: -8915327726919978405, guid: e8cfd9c9ac1d40b4ba95dface21b5060, type: 3}
+      value: {fileID: -1063490167053169605, guid: 5d9257893ced7b041b23c7798fa17628, type: 3}
     - time: 0.3
-      value: {fileID: -8053095777402275025, guid: e8cfd9c9ac1d40b4ba95dface21b5060, type: 3}
+      value: {fileID: -357630263134608934, guid: 5d9257893ced7b041b23c7798fa17628, type: 3}
     - time: 0.43333334
-      value: {fileID: 4688295478533005478, guid: e8cfd9c9ac1d40b4ba95dface21b5060, type: 3}
+      value: {fileID: -5362376229641748583, guid: 5d9257893ced7b041b23c7798fa17628, type: 3}
     - time: 0.5833333
-      value: {fileID: 3156989228384878200, guid: e8cfd9c9ac1d40b4ba95dface21b5060, type: 3}
+      value: {fileID: -2291935767630554725, guid: 5d9257893ced7b041b23c7798fa17628, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -52,11 +52,11 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -8915327726919978405, guid: e8cfd9c9ac1d40b4ba95dface21b5060, type: 3}
-    - {fileID: -8915327726919978405, guid: e8cfd9c9ac1d40b4ba95dface21b5060, type: 3}
-    - {fileID: -8053095777402275025, guid: e8cfd9c9ac1d40b4ba95dface21b5060, type: 3}
-    - {fileID: 4688295478533005478, guid: e8cfd9c9ac1d40b4ba95dface21b5060, type: 3}
-    - {fileID: 3156989228384878200, guid: e8cfd9c9ac1d40b4ba95dface21b5060, type: 3}
+    - {fileID: 5882834985922949356, guid: 5d9257893ced7b041b23c7798fa17628, type: 3}
+    - {fileID: -1063490167053169605, guid: 5d9257893ced7b041b23c7798fa17628, type: 3}
+    - {fileID: -357630263134608934, guid: 5d9257893ced7b041b23c7798fa17628, type: 3}
+    - {fileID: -5362376229641748583, guid: 5d9257893ced7b041b23c7798fa17628, type: 3}
+    - {fileID: -2291935767630554725, guid: 5d9257893ced7b041b23c7798fa17628, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -81,11 +81,4 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events:
-  - time: 0.06666667
-    functionName: 
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []
